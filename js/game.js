@@ -36,7 +36,7 @@ function init() {
 	loadAllImage();
 	joueur = new player(100, canvas.height);
 	marteau = new Marteau();
-	levelList.push(new levelT1());
+	levelList.push(new levelT3());
 	levelList.push(new levelT2());
 	levelList.push(new levelT3());
 	actualLevel = levelList[0];

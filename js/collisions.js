@@ -165,7 +165,7 @@ function testCollisionJoueursPlatform(){
 				joueur.y = tmpy - joueur.h;
 				joueur.onPlatform = true;
 			}
-		}else if(!joueur.onPlatform && joueur.y + joueur.h <= tmpy && joueur.y + joueur.h/1.5 > tmpy - joueur.h && !joueur.jump){
+		}else if(!joueur.onPlatform && joueur.y + joueur.h <= tmpy && joueur.y + joueur.h/1.5 > tmpy - joueur.h && !joueur.jump && !joueur.climb){
             joueur.vitesseY=2;
             joueur.jump = true;
             joueur.fall = true;

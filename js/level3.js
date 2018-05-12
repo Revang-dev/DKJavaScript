@@ -3,7 +3,7 @@ class levelT3 {
 		this.plateform = [];
 		this.echelles = [];
 		this.bonusList = [];
-		this.color = 'blue';
+		this.color = 'yellow';
 	}
 	
 	initLevel(){
