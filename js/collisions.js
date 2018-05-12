@@ -208,7 +208,7 @@ function testCollisionJoueurEchelle() {
 }
 
 function testCollisionJoueurMarteau() {
-	if (marteau.exist && !joueur.marteau) {
+	if (marteau.exist && !marteau.get) {
 		if (!((joueur.x >= marteau.x + marteau.l) || (joueur.x + joueur.l <= marteau.x) || (joueur.y >= marteau.y + marteau.h) || (joueur.y + joueur.h <= marteau.y))) {
 			joueur.marteau = true;
 			marteau.get = true;

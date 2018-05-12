@@ -1,6 +1,9 @@
 function traiteKeydown(evt) {
 	let code = evt.code;
 	if (game) {
+		if (evt.keyCode == 32) {
+			useHammer();
+		}
 		switch(code) {
 			case 'ArrowRight':
 				if (joueur.climb) {

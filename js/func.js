@@ -137,3 +137,10 @@ function playSound(name) {
 		sound.loop = false;
 	}
 }
+
+function useHammer() {
+	if (joueur.marteau) {
+		joueur.marteau = false;
+		playSound("hammer");
+	}
+}
