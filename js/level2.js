@@ -35,31 +35,52 @@ function loadEchelle2(){
 	cwt = canvas.width;
 	cht = canvas.height;
 	add =  cht/7.8;
-	ech1 = new Echelle(cwt-cwt/1.05,cht-(cht/4.9),cwt/5.35);
-	ech2 = new Echelle(cwt/1.05-(canvas.width/19),cht-(cht/4.9),cwt/5.35);
+	l =  (canvas.width/19)
+	///////////////////////////////////////////////////////////////////////
+	ech1 = new Echelle(cwt-cwt/1.08,cht-(cht/4.9),cwt/5.35);
+	ech2 = new Echelle(cwt/1.08-l,cht-(cht/4.9),cwt/5.35);
 	ech3 = new Echelle(cwt-cwt/1.5,cht-(cht/4.9),cwt/5.35);
-	ech4 = new Echelle(cwt/1.5-(canvas.width/19),cht-(cht/4.9),cwt/5.35);
-//	ech5 = new Echelle(cwt-cwt/3,cht-(cht/1.47),cwt/4.5);
-//	ech6 = new Echelle(cwt-cwt/2,cht-(cht/1.26),cwt/6.8);
+	ech4 = new Echelle(cwt/1.5-l,cht-(cht/4.9),cwt/5.35);
+	///////////////////////////////////////////////////////////////////////
+	ech5 = new Echelle(cwt/1.32,cht-(cht/2.7),cwt/5.8);
+	ech6 = new Echelle(cwt-cwt/2-l/2,cht-(cht/2.7),cwt/5.8);
+	ech7 = new Echelle(cwt-cwt/1.32-(canvas.width/19),cht-(cht/2.7),cwt/5.8);
+	///////////////////////////////////////////////////////////////////////
+	ech8 = new Echelle(cwt-cwt/1.5,cht-(cht/1.9),cwt/6.2);
+	ech9 = new Echelle(cwt/1.5-l,cht-(cht/1.9),cwt/6.2);
+	///////////////////////////////////////////////////////////////////////
+	ech10 = new Echelle(cwt-cwt/2-l/2,cht-(cht/1.5),cwt/6.9);
+	///////////////////////////////////////////////////////////////////////
+	ech11 = new Echelle(cwt-cwt/1.6,cht-(cht/1.26),cwt/7.5);
+	ech12 = new Echelle(cwt/1.6-l,cht-(cht/1.26),cwt/7.5);
 	echelles.push(ech1);
 	echelles.push(ech2);
 	echelles.push(ech3);
 	echelles.push(ech4);
-//	echelles.push(ech5);
-//	echelles.push(ech6);
+	echelles.push(ech5);
+	echelles.push(ech6);
+	echelles.push(ech7);
+	echelles.push(ech8);
+	echelles.push(ech9);
+	echelles.push(ech10);
+	echelles.push(ech11);
+	echelles.push(ech12);
 }
 
 function loadBonus2(){
 	cwt = canvas.width;
 	cht = canvas.height;
-	bn1 = new bonus(cwt/1.4,cht/1.4);
-	bn2 = new bonus(cwt/15,cht/1.8);
-	bn3 = new bonus(cwt/1.8,cht/1.7);
-	bn4 = new bonus(cwt/5,cht/2.5);
-	bn5 = new bonus(cwt - cwt/10,cht/10);
+	l = (canvas.width/18)/2;
+	bn1 = new bonus(cwt/1.1,cht/1.6);
+	bn2 = new bonus(cwt-cwt/1.1-l*2,cht/1.6);
+	bn3 = new bonus(cwt/2-l,cht/1.9);
+	bn4 = new bonus(cwt/10,cht/2.5);
+	bn5 = new bonus(cwt - cwt/10-l*2,cht/2.5);
+	bn6 = new bonus(cwt/2-l,cht/4);
 	bonusList.push(bn1);
 	bonusList.push(bn2);
 	bonusList.push(bn3);
 	bonusList.push(bn4);
 	bonusList.push(bn5);
+	bonusList.push(bn6);
 }
