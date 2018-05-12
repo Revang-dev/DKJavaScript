@@ -6,7 +6,7 @@ class bonus {
       this.y = y || 0;
       this.l =  canvas.width/18;
       this.h = canvas.width/18;
-		this.img = images["coins01"];
+	  this.img = images["coins01"];
     }
     
     draw(ctx) {
@@ -44,6 +44,7 @@ class player{
 	  this.climb = false;
 	  this.attack = false;
 	  this.marteau = false;
+	  this.onPltfrm = true;
     }
     rest(){
 		this.images = ["01R"];
@@ -100,14 +101,19 @@ class player{
  }
 
 class Plateform{
-  constructor(x1,y1, x2, y2,c){
+  constructor(x1,y1, x2, y2,c,elvB,elvS,elvE){
     this.x1 = x1 || 0;
     this.y1 = y1 || 0;
     this.x2 = x2 || 1;
     this.y2 = y2 || 1;
     this.h= canvas.height/60;
 	this.color = c;
+	this.elevator = elvB || false;
+	this.elvtStart = elvS || 0;
+	this.elvtEnd = elvE || 0;
+	this.vitesseY = -1;
   }
+  
   draw(ctx){
     ctx.save();
     ctx.beginPath();
@@ -122,6 +128,18 @@ class Plateform{
     ctx.stroke();
     ctx.restore();
   }
+  move(){
+	if(this.elevator){
+		if(this.y1 <= this.elvtEnd){
+			this.y1 = this.elvtStart;
+			this.y2 = this.elvtStart;
+			player.fall = true;
+		}
+		this.y1 += this.vitesseY;
+		this.y2 += this.vitesseY;
+	}
+  }
+  
 }
 
 class Tonneau {

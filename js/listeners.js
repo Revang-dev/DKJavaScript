@@ -7,7 +7,7 @@ function traiteKeydown(evt) {
 		switch(code) {
 			case 'ArrowRight':
 				if (joueur.climb) {
-					if (joueur.y <= ladder) {
+					if (joueur.y +joueur.h <= ladder) {
 						joueur.climb = false;
 					}
 				}
@@ -18,7 +18,7 @@ function traiteKeydown(evt) {
 				break;
 			case 'ArrowLeft':
 				if (joueur.climb) {
-					if (joueur.y <= ladder) {
+					if (joueur.y +joueur.h <= ladder) {
 						joueur.climb = false;
 					}
 				}
@@ -29,6 +29,7 @@ function traiteKeydown(evt) {
 				break;
 			case 'ArrowUp':
 			// on va vers le haut
+				joueur.onPltfrm = false;
 				AnimClimb(true);
 				if (!joueur.jump  && !joueur.climb) {
 					joueur.jump = true;
@@ -70,7 +71,7 @@ function traiteKeyup(evt) {
 			case 'ArrowUp':
 				joueur.stop();
 				if(joueur.climb){
-					if (joueur.y <= ladder) {
+					if (joueur.y + joueur.h <= ladder) {
 						joueur.climb = false;
 					}
 					joueur.vitesseY = 0;

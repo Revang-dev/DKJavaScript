@@ -36,9 +36,9 @@ function init() {
 	loadAllImage();
 	joueur = new player(100, canvas.height);
 	marteau = new Marteau();
-	levelList.push(new levelT1());
-	levelList.push(new levelT2());
 	levelList.push(new levelT3());
+	levelList.push(new levelT2());
+	levelList.push(new levelT1());
 	actualLevel = levelList[0];
 	actualLevel.initLevel();
 	// Ecouteurs de clavier
@@ -99,6 +99,7 @@ function dessineEtDeplaceLesObjets() {
 	marioAtDK();
 	actualLevel.plateform.forEach((plt) => {
 		plt.draw(ctx);
+		plt.move();
 	})
 	actualLevel.echelles.forEach((ech) => {
 		ech.draw(ctx);

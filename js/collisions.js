@@ -36,14 +36,21 @@ function testeCollisionsAvecMurs(r) {
   
   if((r.x + r.l) > canvas.width) {
     // detection avec mur de droite
-    r.vitesseX = -r.vitesseX;
+   	if(r.vitesseX != 2){
+		r.vitesseX = -r.vitesseX;
+	}
+	if((r.y) >= canvas.height/9){
+			tonneaux.splice(tonneaux.indexOf(r),1);			  
+	}
     r.x = canvas.width - r.l;
   } else if((r.x) < 0) {
     // detection avec mur de gauche
+	if(r.vitesseX != -2){
+		r.vitesseX = -r.vitesseX;
+	}
 	 if((r.y) >= canvas.height/9){
 				tonneaux.splice(tonneaux.indexOf(r),1);			  
 			}
-    r.vitesseX = -r.vitesseX;
     r.x = 0;
   }
    if(r.vitesseX == -1 || r.vitesseX == 1){
@@ -134,12 +141,14 @@ function testCollisionTonneauPlatform(){
 function testCollisionJoueursPlatform(){
 	xJ = joueur.x+(joueur.l/2);
 	yJ = joueur.y+joueur.h;
+	joueur.onPlatform = false;
 	actualLevel.plateform.forEach((plt)=>{
 		coef = (plt.y2 - plt.y1) / (plt.x2 - plt.x1);
 		tmpy = Math.floor((xJ - plt.x1) * coef + plt.y1 - plt.h / 2);
 		if (xJ >= plt.x1 && xJ <= plt.x2) {
 			if (yJ >=  tmpy && yJ - joueur.vitesseY <= tmpy) {
 				if(joueur.fall){
+					joueur.onPlatform = true;
 					joueur.y = tmpy - joueur.h;
 					joueur.jump = false;
 					joueur.fall = false;
@@ -148,17 +157,15 @@ function testCollisionJoueursPlatform(){
 			}else if(!joueur.climb && !joueur.jump && tmpy <= yJ && tmpy > joueur.y+(joueur.h/4)){
 				joueur.y = tmpy - joueur.h;
 			}
-		}else if(joueur.y + joueur.h <= tmpy && joueur.y + joueur.h/1.5 > tmpy - joueur.h && !joueur.jump){
+		}else if(!joueur.onPlatform && joueur.y + joueur.h <= tmpy && joueur.y + joueur.h/1.5 > tmpy - joueur.h && !joueur.jump){
             joueur.vitesseY=2;
             joueur.jump = true;
             joueur.fall = true;
-			joueur.climb = false;
         }
-		if(tmpy > yJ && tmpy-joueur.h <= yJ && xJ >= plt.x1 && xJ <= plt.x2 && !joueur.jump && !joueur.climb){
+		if(!joueur.onPlatform && tmpy > yJ && tmpy-joueur.h <= yJ && xJ >= plt.x1 && xJ <= plt.x2 && !joueur.jump && !joueur.climb){
 			joueur.vitesseY=2;
 			joueur.jump = true;
 			joueur.fall = true;
-			joueur.climb = false;
 		}
 	})
 }
