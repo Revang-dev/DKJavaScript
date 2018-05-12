@@ -56,6 +56,7 @@ class player{
 		this.fall = false;
 		this.x = 100;
 		this.y= canvas.height;
+		tonneaux = [];
 	}
 	
 	stop(){

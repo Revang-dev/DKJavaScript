@@ -146,9 +146,16 @@ function testCollisionJoueursPlatform(){
 		coef = (plt.y2 - plt.y1) / (plt.x2 - plt.x1);
 		tmpy = Math.floor((xJ - plt.x1) * coef + plt.y1 - plt.h / 2);
 		if (xJ >= plt.x1 && xJ <= plt.x2) {
-			if (yJ >=  tmpy && yJ - joueur.vitesseY <= tmpy) {
+			if(yJ >= tmpy + plt.vitesseY && yJ - plt.vitesseY <= tmpy && plt.elevator){
+				joueur.onPlatform = true;
+				joueur.y = tmpy - joueur.h;
+				joueur.jump = false;
+				joueur.fall = false;
+				joueur.vitesseY = 0;
+				}
+			else if (yJ >=  tmpy && yJ - joueur.vitesseY <= tmpy) {
+				joueur.onPlatform = true;
 				if(joueur.fall){
-					joueur.onPlatform = true;
 					joueur.y = tmpy - joueur.h;
 					joueur.jump = false;
 					joueur.fall = false;
@@ -156,6 +163,7 @@ function testCollisionJoueursPlatform(){
 				}
 			}else if(!joueur.climb && !joueur.jump && tmpy <= yJ && tmpy > joueur.y+(joueur.h/4)){
 				joueur.y = tmpy - joueur.h;
+				joueur.onPlatform = true;
 			}
 		}else if(!joueur.onPlatform && joueur.y + joueur.h <= tmpy && joueur.y + joueur.h/1.5 > tmpy - joueur.h && !joueur.jump){
             joueur.vitesseY=2;
