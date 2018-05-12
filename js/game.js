@@ -18,10 +18,9 @@ let sound = new Audio("");
 let musicisload = false;
 ////////////////////////
 var level = 1;
-let plateform = [];
 let tonneaux = [];
-let echelles = [];
-let bonusList = [];
+let levelList = [];
+let actualLevel;
 let dKong;
 var startb = 0.74;
 var startm = 1;
@@ -36,7 +35,10 @@ function init() {
 	ctx = canvas.getContext("2d");
 	loadAllImage();
 	joueur = new player(100, canvas.height);
-	loadLevel2();
+	levelList.push(new levelT1());
+	levelList.push(new levelT2());
+	actualLevel = levelList[0];
+	actualLevel.initLevel();
 	// Ecouteurs de clavier
 	window.onkeydown = traiteKeydown;
 	window.onkeyup = traiteKeyup;
@@ -93,10 +95,10 @@ function dessineEtDeplaceLesObjets() {
 	afficheFond();
 	afficheBarre();
 	marioAtDK();
-	plateform.forEach((plt) => {
+	actualLevel.plateform.forEach((plt) => {
 		plt.draw(ctx);
 	})
-	echelles.forEach((ech) => {
+	actualLevel.echelles.forEach((ech) => {
 		ech.draw(ctx);
     })
 	joueur.draw(ctx);
@@ -119,7 +121,7 @@ function dessineEtDeplaceLesObjets() {
 		if (joueur.jump) {
 			AnimJump();
 		}
-		bonusList.forEach((bn) =>{
+		actualLevel.bonusList.forEach((bn) =>{
 			bn.draw(ctx);
 		})
 		

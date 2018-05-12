@@ -21,11 +21,11 @@ function testCollisionsEnnemisMurs() {
 }
 
 function testCollisionsBonusJoueur(){
-	for(i = 0; i < bonusList.length;i++){
-		if(rectsOverlap(joueur.x,joueur.y,joueur.l,joueur.h,bonusList[i].x,bonusList[i].y,bonusList[i].l,bonusList[i].h)){
+	for(i = 0; i < actualLevel.bonusList.length;i++){
+		if(rectsOverlap(joueur.x,joueur.y,joueur.l,joueur.h,actualLevel.bonusList[i].x,actualLevel.bonusList[i].y,actualLevel.bonusList[i].l,actualLevel.bonusList[i].h)){
 			joueur.score += 100;
 			playSound("coin");
-			bonusList.splice(i,1);
+			actualLevel.bonusList.splice(i,1);
 		}
 	}
 }
@@ -98,7 +98,7 @@ function testCollisionTonneauPlatform(){
 	tonneaux.forEach((tno)=>{
 		xJ = tno.x;
 		yJ = tno.y+tno.h;
-		plateform.forEach((plt)=>{
+		actualLevel.plateform.forEach((plt)=>{
 			coef = (plt.y2 - plt.y1) / (plt.x2 - plt.x1);
 			tmpy = Math.floor((xJ - plt.x1) * coef + plt.y1 - plt.h / 2);
 			if (xJ >= plt.x1 && xJ <= plt.x2) {
@@ -130,7 +130,7 @@ function testCollisionTonneauPlatform(){
 function testCollisionJoueursPlatform(){
 	xJ = joueur.x+(joueur.l/2);
 	yJ = joueur.y+joueur.h;
-	plateform.forEach((plt)=>{
+	actualLevel.plateform.forEach((plt)=>{
 		coef = (plt.y2 - plt.y1) / (plt.x2 - plt.x1);
 		tmpy = Math.floor((xJ - plt.x1) * coef + plt.y1 - plt.h / 2);
 		if (xJ >= plt.x1 && xJ <= plt.x2) {
@@ -169,7 +169,7 @@ function rectsOverlap(x1, y1, w1, h1, x2, y2, w2, h2) {
 }
 
 function testCollisionTonneauEchelle(tno){
-	echelles.forEach((ech) => {
+	actualLevel.echelles.forEach((ech) => {
 		if ((ech.x <= tno.x && ech.x + ech.l >= tno.x)
 			&& (ech.y <= tno.y+tno.l && ech.y + ech.h/2 >= tno.y + tno.l) && !tno.echelle && !tno.passed
 		) {
@@ -193,7 +193,7 @@ function testCollisionJoueurEchelle() {
 	ladder = -1;
 	endladder = -1;
 	xladder = -1;
-	echelles.forEach((ech) => {
+	actualLevel.echelles.forEach((ech) => {
 		if ((ech.x <= joueur.x+joueur.l/2 && ech.x + ech.l >= joueur.x + joueur.l/2) && 
 		((ech.y <= joueur.y && ech.y + ech.h >= joueur.y) || (ech.y <= joueur.y + joueur.h && ech.y + ech.h >= joueur.y + joueur.h))) {
 			ladder = ech.y;
