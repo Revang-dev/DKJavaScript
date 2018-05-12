@@ -140,7 +140,28 @@ function playSound(name) {
 
 function useHammer() {
 	if (joueur.marteau) {
-		joueur.marteau = false;
-		playSound("hammer");
+		xJ = joueur.x+(joueur.l/2);
+		yJ = joueur.y+joueur.h;
+		actualLevel.plateform.forEach((plt)=>{
+			coef = (plt.y2 - plt.y1) / (plt.x2 - plt.x1);
+			tmpy = Math.floor((xJ - plt.x1) * coef + plt.y1 - plt.h / 2);
+			if (xJ >= plt.x1 && xJ <= plt.x2) {
+				if (yJ >=  tmpy && yJ - joueur.vitesseY <= tmpy) {
+					joueur.marteau = false;
+					playSound("hammer");
+					
+					tonneaux.forEach((tno)=>{
+						xT = tno.x - tno.h/2;
+						if (xT >= plt.x1 && xT <= plt.x2) {
+							yT = tno.y + tno.h;
+							tmpy2 = plt.y1 + xT * coef;
+							if (yT + tno.h >=  tmpy2 && yT - tno.h <=  tmpy2) {
+								tonneaux.splice(tonneaux.indexOf(tno),1);
+							}
+						}
+					})
+				}
+			}
+		})
 	}
 }

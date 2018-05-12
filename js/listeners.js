@@ -29,7 +29,6 @@ function traiteKeydown(evt) {
 				break;
 			case 'ArrowUp':
 			// on va vers le haut
-				joueur.onPltfrm = false;
 				AnimClimb(true);
 				if (!joueur.jump  && !joueur.climb) {
 					joueur.jump = true;

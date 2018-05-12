@@ -32,8 +32,8 @@ class levelT1 {
 	}
 
 	loadEchelle(){
-		this.echelles.push(new Echelle(canvas.width-canvas.width/1.5,canvas.height-(canvas.height/5.7),canvas.width/7));
-		this.echelles.push(new Echelle(canvas.width-canvas.width/3,canvas.height-(canvas.height/6.5),canvas.width/8.8));
+		this.echelles.push(new Echelle(canvas.width-canvas.width/1.5,canvas.height-(canvas.height/5.6),canvas.width/6.8));
+		this.echelles.push(new Echelle(canvas.width-canvas.width/3,canvas.height-(canvas.height/6.4),canvas.width/8.8));
 		this.echelles.push(new Echelle(canvas.width-canvas.width/2,canvas.height-(canvas.height/2.09),canvas.width/6.2));
 		this.echelles.push(new Echelle(canvas.width-canvas.width/1.5,canvas.height-(canvas.height/1.57),canvas.width/6.7));
 		this.echelles.push(new Echelle(canvas.width-canvas.width/3,canvas.height-(canvas.height/1.47),canvas.width/4.5));

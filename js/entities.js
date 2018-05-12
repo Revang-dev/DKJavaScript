@@ -43,8 +43,13 @@ class player{
 	  this.jump = false;
 	  this.climb = false;
 	  this.attack = false;
-	  this.marteau = false;
+<<<<<<< HEAD
+	  this.marteau = true;
 	  this.onPltfrm = true;
+=======
+	  this.marteau = false;
+	  this.onPlatform = true;
+>>>>>>> 2c1b0a13751dc268f6c5f902fbf96bc038b30371
     }
     rest(){
 		this.images = ["01R"];
@@ -56,6 +61,7 @@ class player{
 		this.fall = false;
 		this.x = 100;
 		this.y= canvas.height;
+		tonneaux = [];
 	}
 	
 	stop(){
@@ -156,6 +162,7 @@ class Tonneau {
 	this.passed= false;
 	this.echlEnd = 0;
 	this.img = images["T01"];
+	this.onPlateforme = true;
   }
   
   draw(ctx) {
