@@ -67,5 +67,5 @@ function afficheGameOver(){
 	var sizeOfFont = String(canvas.height/18);
 	ctx.font = sizeOfFont +'px serif';
 	ctx.fillStyle = "red";
-	ctx.fillText('YOU DIED',canvas.width/3,(canvas.height/15));
+	ctx.fillText('YOU DIED',37 * canvas.width/100,(canvas.height/15));
 }
