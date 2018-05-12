@@ -45,20 +45,26 @@ function circle(){
 		ctx.closePath();
 		ctx.fill();
 	}else{
-		ctx.fillStyle='green';
-		ctx.beginPath();
-		ctx.arc(joueur.x+(joueur.l/2),joueur.y+(joueur.h/2),1,0,Math.PI*2);
-		ctx.closePath();
-		ctx.fill();
+		game = false;
+		timeUpdate = 0;
+		startGame();
 	}
 }
 
 function startGame(){
-	if(timeUpdate <= 100){
+	if(timeUpdate <= 300){
+		ctx.save();
+		afficheFond();
+		var sizeOfFont = String(canvas.height/18);
+		ctx.font = sizeOfFont +'px serif';
+		ctx.fillStyle='white';
+		ctx.fillText('START!',canvas.width/2.4, canvas.height/2);
 		timeUpdate++;
+		ctx.restore();
 	}else{
 		joueur.rest();
 		timeUpdate = 0;
+		game = true;
 		
 	}
 }

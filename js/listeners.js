@@ -46,7 +46,8 @@ function traiteKeydown(evt) {
 		}
 		else {
 			if (evt.keyCode == 32) {
-				game = true;
+				menu = false;
+				timeUpdate = 0;
 				playSound("start");
 				requestAnimationFrame(animation);
 			}

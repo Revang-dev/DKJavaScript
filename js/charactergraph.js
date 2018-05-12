@@ -28,7 +28,7 @@ function isLanding(){
 	}else if(joueur.img == images["JL"]){
 		joueur.img = images["01L"];
 	}
-	//timeUpdate = 0;
+	timeUpdate = 0;
 }
 
 function isInvulnerable(){

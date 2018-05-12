@@ -26,6 +26,7 @@ var startb = 0.74;
 var startm = 1;
 var gameOver = false;
 var winner  = false;
+var menu = true;
 
 
 // main.js
@@ -72,9 +73,9 @@ function animation() {
 	testeCollisions();
   
 	// 4 on rappelle la boucle d'animation 60 fois / s
-	requestAnimationFrame(animation);
+
 	}
-	else {
+	else if(menu){
 		ctx.save();
 		ctx.globalAlpha = 1;
 		ctx.drawImage(images["title"], 0, 0, canvas.width, canvas.height);
@@ -88,8 +89,10 @@ function animation() {
 		ctx.globalAlpha = startb;
 		ctx.fillText('Press Spacebar',canvas.width/3,(canvas.height/9));
 		ctx.restore();
-		requestAnimationFrame(animation);
+	}else{
+		startGame();
 	}
+	requestAnimationFrame(animation);
 }
 
 
