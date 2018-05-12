@@ -44,8 +44,13 @@ class player{
 	  this.climb = false;
 	  this.attack = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	  this.marteau = true;
 	  this.onPltfrm = true;
+=======
+	  this.marteau = false;
+	  this.onPlatform = true;
+>>>>>>> 2c1b0a13751dc268f6c5f902fbf96bc038b30371
 =======
 	  this.marteau = false;
 	  this.onPlatform = true;
@@ -210,7 +215,7 @@ class Tonneau {
   }
   
   move() {
-	if (this.fall && !this.echelle) {
+		if (this.fall && !this.echelle) {
 		this.y += 3;
 		
 	}else {
