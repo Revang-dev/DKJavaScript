@@ -1,7 +1,7 @@
 
 class donkeyKong{
-	constructor(){
-		this.x = canvas.width/25;
+	constructor(x){
+		this.x = x;
 		this.y = canvas.height/9;
 		this.h = canvas.height/10;
 		this.l = canvas.width/10;
