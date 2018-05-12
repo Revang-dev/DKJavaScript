@@ -43,6 +43,7 @@ class player{
 	  this.jump = false;
 	  this.climb = false;
 	  this.attack = false;
+	  this.marteau = false;
     }
     rest(){
 		this.images = ["01R"];
@@ -211,5 +212,30 @@ class Echelle {
 		this.h,this.x, this.y,this.l,this.h);
 	}
 		ctx.restore();
+    }
+}
+
+class Marteau {
+	constructor(x, y) {
+      this.x = x || 0;
+      this.y = y || 0;
+      this.l = canvas.width/20;
+      this.h = canvas.height/17;
+	  this.img = images["bonus"];
+	  this.exist = false;
+	  this.get = false;
+	}
+	draw(ctx) {
+		if (this.exist && !this.get) {
+			if (this.x == 0 && this.y == 0) {
+				var tmp = Math.floor(Math.random() * actualLevel.plateform.length);
+				var myPlateform = actualLevel.plateform[tmp];
+				this.x = myPlateform.x1 + Math.floor(Math.random() * (myPlateform.x2 - myPlateform.x1)) - this.l;
+				this.y = myPlateform.y1 + Math.floor((myPlateform.y2 - myPlateform.y1) / (myPlateform.x2 - myPlateform.x1) * this.x) - this.h;
+			}
+			ctx.save();
+			ctx.drawImage(this.img,this.x, this.y,this.l,this.h);
+			ctx.restore();
+		}
     }
 }

@@ -50,6 +50,13 @@ function afficheLevel(){
 	ctx.fillText(level,(canvas.width/3)+(canvas.height/14),canvas.height/11);
 }
 
+function afficheMarteau() {
+	var img = images["bonus"];
+	if (joueur.marteau) {
+		ctx.drawImage(img, 23 * (canvas.width / 100), canvas.height/50, (canvas.width/20), (canvas.height/17));
+	}
+}
+
 function afficheWin(){
 	if(joueur.score < pnt +500){
 	joueur.score += 2;

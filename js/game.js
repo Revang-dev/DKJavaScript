@@ -35,6 +35,7 @@ function init() {
 	ctx = canvas.getContext("2d");
 	loadAllImage();
 	joueur = new player(100, canvas.height);
+	marteau = new Marteau();
 	levelList.push(new levelT1());
 	levelList.push(new levelT2());
 	levelList.push(new levelT3());
@@ -116,6 +117,7 @@ function dessineEtDeplaceLesObjets() {
 		afficheScore();
 		afficheLife();
 		afficheLevel();
+		afficheMarteau();
 		if(joueur.moving){
 			timeUpdate++;
 		}
@@ -131,6 +133,7 @@ function dessineEtDeplaceLesObjets() {
 			tonn.move();
 
 		})
+		marteau.draw(ctx);
 		joueur.move();
 	}
 

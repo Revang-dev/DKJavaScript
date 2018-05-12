@@ -32,6 +32,7 @@ function loadAllImage(){
   loadImage("TF01");
   loadImage("TF02");
   loadImage("title");
+  loadImage("bonus");
 }
 
 function afficheFond(){
@@ -110,6 +111,8 @@ function marioAtDK(){
 	if(joueur.y + joueur.h <= dKong.y+dKong.h && joueur.x + joueur.l <= dKong.x+dKong.l && joueur.x >= 0 && !winner){
 		winner = true;
 		pnt = joueur.score;
+		marteau = new Marteau();
+		player.marteau = false;
 		stopMusic();
 	}
 }

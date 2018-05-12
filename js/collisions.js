@@ -6,6 +6,7 @@ function testeCollisions() {
   testCollisionTonneauPlatform();
   testCollisionJoueurEchelle();
   testCollisionsBonusJoueur();
+  testCollisionJoueurMarteau();
   tonneaux.forEach((tno) =>{
 	testCollisionTonneauEchelle(tno);
   })
@@ -86,6 +87,9 @@ function testCollisionJoueursEnnemis() {
 				joueur.retry--;
 				joueur.life = 3;
 				joueur.rest();
+				if (Math.random() < (1 / joueur.retry)) {
+					marteau.exist = true;
+				}
 			}else{
 				joueur.hit = true;
 			}
@@ -201,4 +205,14 @@ function testCollisionJoueurEchelle() {
 			xladder = ech.x + ech.l/10;
 		}
 	})
+}
+
+function testCollisionJoueurMarteau() {
+	if (marteau.exist && !joueur.marteau) {
+		if (!((joueur.x >= marteau.x + marteau.l) || (joueur.x + joueur.l <= marteau.x) || (joueur.y >= marteau.y + marteau.h) || (joueur.y + joueur.h <= marteau.y))) {
+			joueur.marteau = true;
+			marteau.get = true;
+			playSound("bonus");
+		}
+	}
 }
