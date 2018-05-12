@@ -107,7 +107,7 @@ function AnimClimb(dir){
 }
 
 function marioAtDK(){
-	if(joueur.y + joueur.h <= canvas.height/4.6 && joueur.x + joueur.l <= canvas.width/5 && joueur.x >= 0 && !winner){
+	if(joueur.y + joueur.h <= dKong.y+dKong.h && joueur.x + joueur.l <= dKong.x+dKong.l && joueur.x >= 0 && !winner){
 		winner = true;
 		pnt = joueur.score;
 		stopMusic();
