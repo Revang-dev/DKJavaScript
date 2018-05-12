@@ -19,7 +19,7 @@ class donkeyKong{
 	donkeyAttack(){
 		if(this.atk){
 			if(this.wait == 60){
-				tonneaux.push(new Tonneau(this.x + (this.l/2),this.y + (this.h/1.5)));//attention bug avec echelle si/12
+				tonneaux.push(new Tonneau(this.x + (this.l/2),this.y + (this.h/1.5)));
 				this.img = images["DK"];
 				this.wait = 0;
 				this.atk = false;
@@ -28,7 +28,7 @@ class donkeyKong{
 				this.wait ++;
 			}
 		}else if(Math.floor(Math.random() * Math.floor(4)) == 0 && !this.megAttack && time == 0){
-			//this.atk = true;
+			this.atk = true;
 		}/*else if(Math.floor(Math.random() * Math.floor(5)) == 0 && !this.atk && time == 0){
 			this.megAttack = true;
 		}*/

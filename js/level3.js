@@ -7,6 +7,7 @@ class levelT3 {
 	}
 	
 	initLevel(){
+		//tonneaux.push(new Tonneau(canvas.width/25 + (canvas.width/10/2),canvas.height/9 + (canvas.width/10/1.5)));
 		this.plateform.splice(0,this.plateform.length);
 		tonneaux.splice(0,this.plateform.length);
 		this.echelles.splice(0,this.plateform.length);

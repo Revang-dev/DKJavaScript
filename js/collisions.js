@@ -107,13 +107,22 @@ function testCollisionJoueursEnnemis() {
  
 function testCollisionTonneauPlatform(){
 	tonneaux.forEach((tno)=>{
+		tonneaux.onPlatform = false;
 		xJ = tno.x;
 		yJ = tno.y+tno.h;
 		actualLevel.plateform.forEach((plt)=>{
 			coef = (plt.y2 - plt.y1) / (plt.x2 - plt.x1);
 			tmpy = Math.floor((xJ - plt.x1) * coef + plt.y1 - plt.h / 2);
 			if (xJ >= plt.x1 && xJ <= plt.x2) {
-				if (yJ >=  tmpy && yJ - tno.vitesseY <= tmpy) {
+				if(yJ >= tmpy + plt.vitesseY && yJ - plt.vitesseY <= tmpy && plt.elevator){
+					tno.onPlatform = true;
+					tno.y = tmpy - tno.h;
+					tno.jump = false;
+					tno.fall = false;
+					tno.vitesseY = 0;
+				}
+				else if (yJ >=  tmpy && yJ - tno.vitesseY <= tmpy) {
+					tno.onPlatform = true;
 					if(tno.fall || (tno.echelle && tno.echlEnd <= tno.y+tno.vitesseY)){
 						tno.direction(plt.y1,plt.y2);
 						tno.y = tmpy - tno.h;
@@ -124,13 +133,14 @@ function testCollisionTonneauPlatform(){
 					}
 				}else if(tmpy <= yJ && tmpy > tno.y+(tno.h/4) && !tno.echelle){
 					tno.y = tmpy - tno.h;
+					tno.onPlatform = true;
 				}
-			}else if(tno.y + tno.h <= tmpy && tno.y + tno.h/1.3 > tmpy - tno.h && !tno.echelle){
+			}else if(!tno.plateform && tno.y + tno.h <= tmpy && tno.y + tno.h/1.3 > tmpy - tno.h && !tno.echelle){
 				tno.direction(plt.y1,plt.y2);
-				tno.vitesseY=3;
+				tno.vitesseY=2;
 				tno.fall = true;
 			}
-			if(tmpy > yJ && tmpy-tno.h <= yJ && xJ >= plt.x1 && xJ <= plt.x2 && !tno.echelle){
+			if(!tno.plateform && tmpy > yJ && tmpy-tno.h <= yJ && xJ >= plt.x1 && xJ <= plt.x2 && !tno.echelle){
 				tno.direction(plt.y1,plt.y2);
 				tno.vitesseY=1;
 			}

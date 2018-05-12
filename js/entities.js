@@ -157,6 +157,7 @@ class Tonneau {
 	this.passed= false;
 	this.echlEnd = 0;
 	this.img = images["T01"];
+	this.onPlateforme = true;
   }
   
   draw(ctx) {
@@ -204,13 +205,8 @@ class Tonneau {
   }
   
   move() {
-	if (this.fall && !this.echelle) {
-		this.y += 3;
-		
-	}else {
 		this.x += this.vitesseX;
 		this.y += this.vitesseY;
-	}
   }
 }
 
