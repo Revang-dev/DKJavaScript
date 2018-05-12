@@ -28,7 +28,7 @@ class donkeyKong{
 				this.wait ++;
 			}
 		}else if(Math.floor(Math.random() * Math.floor(4)) == 0 && !this.megAttack && time == 0){
-			this.atk = true;
+			//this.atk = true;
 		}/*else if(Math.floor(Math.random() * Math.floor(5)) == 0 && !this.atk && time == 0){
 			this.megAttack = true;
 		}*/
