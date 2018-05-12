@@ -1,5 +1,6 @@
-function loadLevel(){
+function loadLevel1(){
 	initLevel();
+	dKong = new donkeyKong(canvas.width/25);
 	loadPlateform();
 	loadEchelle();
 	loadBonus();

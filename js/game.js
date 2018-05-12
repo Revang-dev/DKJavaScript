@@ -36,8 +36,7 @@ function init() {
 	ctx = canvas.getContext("2d");
 	loadAllImage();
 	joueur = new player(100, canvas.height);
-	dKong = new donkeyKong();
-	loadLevel();
+	loadLevel2();
 	// Ecouteurs de clavier
 	window.onkeydown = traiteKeydown;
 	window.onkeyup = traiteKeyup;
