@@ -44,7 +44,7 @@ class player{
 	  this.climb = false;
 	  this.attack = false;
 	  this.marteau = false;
-	  this.onPltfrm = true;
+	  this.onPlatform = true;
     }
     rest(){
 		this.images = ["01R"];
