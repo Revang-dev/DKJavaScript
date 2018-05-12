@@ -110,5 +110,27 @@ function marioAtDK(){
 	if(joueur.y + joueur.h <= canvas.height/4.6 && joueur.x + joueur.l <= canvas.width/5 && joueur.x >= 0 && !winner){
 		winner = true;
 		pnt = joueur.score;
+		stopMusic();
+	}
+}
+
+function playMusic(name) {
+	music.src = "sound/"+ name +".mp3";
+	if (music.paused = true) {
+		music.volume = 0.6;
+		music.play();
+		music.loop = true;
+	}
+}
+
+function stopMusic() {
+	music.pause();
+}
+
+function playSound(name) {
+	sound.src = "sound/"+ name +".mp3";
+	if (sound.paused = true) {
+		sound.play();
+		sound.loop = false;
 	}
 }

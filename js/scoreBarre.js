@@ -56,6 +56,7 @@ function afficheWin(){
 	}else if (joueur.score == pnt +500){
 		time = 0;
 		winner = false
+		musicisload = false;
 		level++;
 		joueur.rest();
 		tonneaux = [];
@@ -66,5 +67,5 @@ function afficheGameOver(){
 	var sizeOfFont = String(canvas.height/18);
 	ctx.font = sizeOfFont +'px serif';
 	ctx.fillStyle = "red";
-	ctx.fillText('GAME OVER',canvas.width/3,(canvas.height/15));
+	ctx.fillText('YOU DIED',canvas.width/3,(canvas.height/15));
 }

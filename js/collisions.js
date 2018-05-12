@@ -24,6 +24,7 @@ function testCollisionsBonusJoueur(){
 	for(i = 0; i < bonusList.length;i++){
 		if(rectsOverlap(joueur.x,joueur.y,joueur.l,joueur.h,bonusList[i].x,bonusList[i].y,bonusList[i].l,bonusList[i].h)){
 			joueur.score += 100;
+			playSound("coin");
 			bonusList.splice(i,1);
 		}
 	}
@@ -70,9 +71,18 @@ function testCollisionJoueursEnnemis() {
         if(rectsOverlap(joueur.x, joueur.y, joueur.l, joueur.h,
                  el.x-el.l, el.y-el.h, el.l*2, el.h*2) && !joueur.hit) {
 			joueur.life--;
+			if (joueur.life > -1) {
+				sound.volume = 0.6;
+				playSound("hit");
+			}
 			if(joueur.retry == 1 && joueur.life == 0){
+				sound.volume = 0.4;
+				playSound("gameover");
+				stopMusic();
 				gameOver = true;
 			}else if(joueur.life == 0){
+				sound.volume = 0.9;
+				playSound("loselife");
 				joueur.retry--;
 				joueur.life = 3;
 				joueur.rest();

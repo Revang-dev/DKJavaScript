@@ -12,6 +12,10 @@ var images ={};
 var timeUpdate = 0;
 var invulnerability = 0;
 var time = 0;
+//for Sound
+let music = new Audio("");
+let sound = new Audio("");
+let musicisload = false;
 ////////////////////////
 var level = 1;
 let plateform = [];
@@ -50,6 +54,10 @@ function animation() {
 		time++;
 		if(time == 100){
 			time = 0;
+		}
+		if (!musicisload) {
+			playMusic("music" + level);
+			musicisload = true;
 		}
 	// 1 on efface
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
