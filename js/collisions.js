@@ -39,7 +39,7 @@ function testeCollisionsAvecMurs(r) {
        if(r.vitesseX != 2){
         r.vitesseX = -r.vitesseX;
     }
-    if((r.y) >= canvas.height/9 && (r.vitesseX == 1 || r.vitesseX == -1)){
+    if((r.y) >= canvas.height/1.1 && (r.vitesseX == 1 || r.vitesseX == -1)){
             tonneaux.splice(tonneaux.indexOf(r),1);
     }
     r.x = canvas.width - r.l;
@@ -48,7 +48,7 @@ function testeCollisionsAvecMurs(r) {
     if(r.vitesseX != -2){
         r.vitesseX = -r.vitesseX;
     }
-     if((r.y) >= canvas.height/9 && (r.vitesseX == 1 || r.vitesseX == -1)){
+     if((r.y) >= canvas.height/1.1 && (r.vitesseX == 1 || r.vitesseX == -1)){
                 tonneaux.splice(tonneaux.indexOf(r),1);
             }
     r.x = 0;
@@ -77,7 +77,7 @@ function testeCollisionsAvecMurs(r) {
 function testCollisionJoueursEnnemis() {
   tonneaux.forEach((el) => {
         if(rectsOverlap(joueur.x, joueur.y, joueur.l, joueur.h,
-                 el.x-el.l, el.y-el.h, el.l*2, el.h*2) && !joueur.hit) {
+                 el.x-el.l, el.y-el.h, el.l*2, el.h*2) && !joueur.hit && !joueur.dead) {
 			joueur.life--;
 			if (joueur.life > -1) {
 				sound.volume = 0.6;
@@ -92,8 +92,16 @@ function testCollisionJoueursEnnemis() {
 				sound.volume = 0.9;
 				playSound("loselife");
 				joueur.retry--;
+				joueur.endD = joueur.y + joueur.h;
 				joueur.life = 3;
-				joueur.rest();
+				joueur.dead = true;
+				joueur.fall = false;
+				joueur.moving = false;
+				joueur.jump = false;
+				joueur.climb = false;
+				joueur.endD = joueur.y - joueur.h;
+				timeUpdate = 0;
+				joueur.img = images["01D"];
 				if (Math.random() < (1 / joueur.retry)) {
 					marteau.exist = true;
 				}
@@ -154,10 +162,9 @@ function testCollisionJoueursPlatform(){
 	actualLevel.plateform.forEach((plt)=>{
 		coef = (plt.y2 - plt.y1) / (plt.x2 - plt.x1);
 		tmpy = Math.floor((xJ - plt.x1) * coef + plt.y1 - plt.h / 2);
-		if (xJ >= plt.x1 && xJ <= plt.x2) {
+		if (xJ >= plt.x1 && xJ <= plt.x2 && !joueur.dead) {
 			if(yJ >= tmpy && yJ - plt.vitesseY <= tmpy && plt.elevator){
 				joueur.onPlatform = true;
-						console.log("here");
 				joueur.y = tmpy - joueur.h;
 				joueur.jump = false;
 				joueur.fall = false;
@@ -171,14 +178,14 @@ function testCollisionJoueursPlatform(){
 					joueur.fall = false;
 					joueur.vitesseY = 0;
 				}
-			}else if(!joueur.climb && !joueur.jump && tmpy <= yJ && tmpy > joueur.y+(joueur.h/4)){
+			}else if(!joueur.climb && !joueur.jump && tmpy <= yJ && tmpy > joueur.y+(joueur.h/1.4)){
 				joueur.y = tmpy - joueur.h;
 				joueur.onPlatform = true;
-			}else if(tmpy > yJ && tmpy-joueur.h <= yJ && xJ >= plt.x1 && xJ <= plt.x2 && !joueur.jump && !joueur.climb){
+			}else if(tmpy > yJ && tmpy <= yJ + (joueur.h/1.8) && xJ >= plt.x1 && xJ <= plt.x2 && !joueur.jump && !joueur.climb){
 				joueur.y = tmpy - joueur.h;
 				joueur.onPlatform = true;
 			}
-		}else if(!joueur.onPlatform && !joueur.jump && !joueur.climb){
+		}else if(!joueur.onPlatform && !joueur.jump && !joueur.climb && !joueur.dead){
             joueur.vitesseY=2;
             joueur.jump = true;
             joueur.fall = true;
@@ -222,7 +229,7 @@ function testCollisionJoueurEchelle() {
 	xladder = -1;
 	actualLevel.echelles.forEach((ech) => {
 		if ((ech.x <= joueur.x+joueur.l/2 && ech.x + ech.l >= joueur.x + joueur.l/2) && 
-		((ech.y <= joueur.y && ech.y + ech.h >= joueur.y) || (ech.y <= joueur.y + joueur.h && ech.y + ech.h >= joueur.y + joueur.h))) {
+		((ech.y <= joueur.y+joueur.h && ech.y + ech.h >= joueur.y) || (ech.y <= joueur.y + joueur.h && ech.y + ech.h >= joueur.y + joueur.h))) {
 			ladder = ech.y;
 			endladder = ladder + ech.h;
 			xladder = ech.x + ech.l/10;

@@ -65,9 +65,9 @@ function afficheWin(){
 		winner = false
 		musicisload = false;
 		level++;
-		joueur.rest();
 		actualLevel = levelList[(level-1)%3];
 		actualLevel.initLevel();
+		joueur.rest();
 		tonneaux = [];
 	}
 }

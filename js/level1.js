@@ -4,6 +4,8 @@ class levelT1 {
 		this.echelles = [];
 		this.bonusList = [];
 		this.color = 'red';
+		this.starty = canvas.height/1.1;
+		this.startx = canvas.width/10;
 	}
 	
 	initLevel(){

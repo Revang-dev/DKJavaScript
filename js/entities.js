@@ -35,7 +35,7 @@ class player{
 	  this.img = images["01R"];
 	  this.hit = false;
 	  this.score = 0;
-	  this.life = 3;
+	  this.life = 1;
 	  this.retry = 5;
 	  this.opacity = 1;
 	  this.moving = false;
@@ -43,18 +43,10 @@ class player{
 	  this.jump = false;
 	  this.climb = false;
 	  this.attack = false;
-<<<<<<< HEAD
-<<<<<<< HEAD
-	  this.marteau = true;
-	  this.onPltfrm = true;
-=======
 	  this.marteau = false;
 	  this.onPlatform = true;
->>>>>>> 2c1b0a13751dc268f6c5f902fbf96bc038b30371
-=======
-	  this.marteau = false;
-	  this.onPlatform = true;
->>>>>>> 2c1b0a13751dc268f6c5f902fbf96bc038b30371
+	  this.dead = false;
+	  this.endD = 0;
     }
     rest(){
 		this.images = ["01R"];
@@ -64,8 +56,9 @@ class player{
 		this.jump = false;
 		this.climb = false;
 		this.fall = false;
-		this.x = 100;
-		this.y= canvas.height;
+		this.dead =false;
+		this.x = actualLevel.startx;
+		this.y= actualLevel.starty;
 		tonneaux = [];
 	}
 	
@@ -95,6 +88,9 @@ class player{
     }
     
     move() {
+	if(this.dead){
+		isDying();
+	}else{
       this.x += this.vitesseX;
       this.y += this.vitesseY;
 	  if(this.jump){
@@ -108,6 +104,7 @@ class player{
 	  }else{
 		isLanding();
 	  }
+	}
 	}
  }
 
@@ -215,13 +212,8 @@ class Tonneau {
   }
   
   move() {
-		if (this.fall && !this.echelle) {
-		this.y += 3;
-		
-	}else {
 		this.x += this.vitesseX;
 		this.y += this.vitesseY;
-	}
   }
 }
 

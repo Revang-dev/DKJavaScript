@@ -28,7 +28,7 @@ function isLanding(){
 	}else if(joueur.img == images["JL"]){
 		joueur.img = images["01L"];
 	}
-	timeUpdate = 0;
+	//timeUpdate = 0;
 }
 
 function isInvulnerable(){
@@ -44,5 +44,17 @@ function isClimbing(){
 		joueur.img = images["01C"];
 	}else if(timeUpdate%10 == 0){
 		joueur.img = images["02C"];
+	}
+}
+
+function isDying(){
+	if(joueur.endD == 0){
+		circle();
+	}else if(timeUpdate%3 == 0 && joueur.y > joueur.endD){
+		joueur.y -= 2;
+	}else if(joueur.y <= joueur.endD){
+		joueur.y += 3;
+		joueur.endD = 0;
+				timeUpdate = 0;
 	}
 }

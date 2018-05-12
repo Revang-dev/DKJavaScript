@@ -33,6 +33,34 @@ function loadAllImage(){
   loadImage("TF02");
   loadImage("title");
   loadImage("bonus");
+  loadImage("01D");
+}
+
+function circle(){
+	if(canvas.width - timeUpdate >= 1){
+		timeUpdate++;
+		ctx.fillStyle='green';
+		ctx.beginPath();
+		ctx.arc(joueur.x+(joueur.l/2),joueur.y+(joueur.h/2),canvas.width - timeUpdate,0,Math.PI*2);
+		ctx.closePath();
+		ctx.fill();
+	}else{
+		ctx.fillStyle='green';
+		ctx.beginPath();
+		ctx.arc(joueur.x+(joueur.l/2),joueur.y+(joueur.h/2),1,0,Math.PI*2);
+		ctx.closePath();
+		ctx.fill();
+	}
+}
+
+function startGame(){
+	if(timeUpdate <= 100){
+		timeUpdate++;
+	}else{
+		joueur.rest();
+		timeUpdate = 0;
+		
+	}
 }
 
 function afficheFond(){
@@ -108,7 +136,7 @@ function AnimClimb(dir){
 }
 
 function marioAtDK(){
-	if(joueur.y + joueur.h <= dKong.y+dKong.h && joueur.x + joueur.l <= dKong.x+dKong.l && joueur.x >= 0 && !winner){
+	if(!joueur.dead && joueur.y + joueur.h <= dKong.y+dKong.h && joueur.x + joueur.l <= dKong.x+dKong.l && joueur.x >= 0 && !winner){
 		winner = true;
 		pnt = joueur.score;
 		marteau = new Marteau();
