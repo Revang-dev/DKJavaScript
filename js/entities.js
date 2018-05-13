@@ -61,6 +61,7 @@ class player{
 		this.y= actualLevel.starty;
 		this.endD = -1;
 		tonneaux = [];
+		tonneauxBleu = [];
 	}
 	
 	stop(){
@@ -219,9 +220,9 @@ class Tonneau {
 }
 
 class TonneauBleu {
-  constructor(vx, vy) {
-    this.x = canvas.width/6.2;
-    this.y = canvas.height/5.2;
+  constructor(vx, vy, x, y) {
+    this.x = x ||canvas.width/6.2;
+    this.y = y || canvas.height/5.2;
 	this.h = canvas.height/50;
 	this.l = canvas.height/50;
     this.vitesseX = vx || 0; 

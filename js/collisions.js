@@ -115,6 +115,48 @@ function testCollisionJoueursEnnemis() {
 		}
 	  })
   
+  tonneauxBleu.forEach((el) => {
+        if(rectsOverlap(joueur.x, joueur.y, joueur.l, joueur.h,
+                 el.x-el.l, el.y-el.h, el.l*2, el.h*2) && !joueur.hit && !joueur.dead) {
+			joueur.life--;
+			if (joueur.life > -1) {
+				sound.volume = 0.6;
+				playSound("hit");
+			}
+			if(joueur.retry == 1 && joueur.life == 0){
+				sound.volume = 0.4;
+				playSound("gameover");
+				stopMusic();
+				if(localStorage.getItem("highScore") < joueur.score){
+					localStorage.setItem("highScore",joueur.score);
+				}
+				console.log(localStorage.getItem("highScore"));
+				gameOver = true;
+			}else if(joueur.life == 0){
+				sound.volume = 0.9;
+				playSound("loselife");
+				joueur.retry--;
+				joueur.endD = joueur.y + joueur.h;
+				joueur.life = 3;
+				joueur.dead = true;
+				joueur.fall = false;
+				joueur.moving = false;
+				joueur.jump = false;
+				joueur.climb = false;
+				joueur.endD = joueur.y - joueur.h;
+				timeUpdate = 0;
+				joueur.img = images["01D"];
+				if (Math.random() < (1 / joueur.retry)) {
+					marteau.exist = true;
+				}
+			}else{
+				joueur.hit = true;
+			}
+		}
+		else if (el.x - el.l > canvas.width || el.y - el.h > canvas.height) {
+			tonneauxBleu.splice(tonneauxBleu.indexOf(el),1);
+		}
+	  })
 }
  
 function testCollisionTonneauPlatform(){

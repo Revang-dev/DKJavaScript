@@ -47,13 +47,24 @@ class donkeyKong{
 				this.wait ++;
 			}
 			else if (this.wait == 300) {
-				this.img = images["DKSP3"];
-				tonneauxBleu.push(new TonneauBleu(2,0));
-				tonneauxBleu.push(new TonneauBleu(1.6,0.4));
-				tonneauxBleu.push(new TonneauBleu(1.2,0.8));
-				tonneauxBleu.push(new TonneauBleu(0.8,1.2));
-				tonneauxBleu.push(new TonneauBleu(0.4,1.6));
-				tonneauxBleu.push(new TonneauBleu(0,2));
+				
+				if ((((level - 1) % 3) + 1) == 2) {
+					this.img = images["DK"];
+					tonneauxBleu.push(new TonneauBleu(0,2, canvas.width/2));
+					tonneauxBleu.push(new TonneauBleu(-0.8,1.2, canvas.width/2));
+					tonneauxBleu.push(new TonneauBleu(-0.4,1.6, canvas.width/2));
+					tonneauxBleu.push(new TonneauBleu(0.8,1.2, canvas.width/2));
+					tonneauxBleu.push(new TonneauBleu(0.4,1.6, canvas.width/2));
+				}
+				else {
+					this.img = images["DKSP3"];
+					tonneauxBleu.push(new TonneauBleu(2,0));
+					tonneauxBleu.push(new TonneauBleu(1.6,0.4));
+					tonneauxBleu.push(new TonneauBleu(1.2,0.8));
+					tonneauxBleu.push(new TonneauBleu(0.8,1.2));
+					tonneauxBleu.push(new TonneauBleu(0.4,1.6));
+					tonneauxBleu.push(new TonneauBleu(0,2));
+				}
 				this.wait ++;
 			}
 			else if (this.wait == 360) {
@@ -67,7 +78,7 @@ class donkeyKong{
 		
 		}else if(Math.floor(Math.random() * Math.floor(4)) == 0 && !this.megAttack && time == 0){
 			this.atk = true;
-		}else if(Math.floor(Math.random() * Math.floor(5)) == 0 && !this.atk && time == 0){
+		}else if(Math.floor(Math.random() * Math.floor(5)) == 0 && !this.atk && time == 0 && level > 3){
 			this.megAttack = true;
 		}
 	}
