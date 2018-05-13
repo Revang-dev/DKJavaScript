@@ -27,16 +27,39 @@ class donkeyKong{
 				this.img = images["DKA"];
 				this.wait ++;
 			}
+			
+		} else if (this.megAttack) {
+			if (this.wait == 0 || this.wait == 120) {
+				this.img = images["DKSPL1"];
+				playSound("sp1");
+				this.wait ++;
+			}
+			else if (this.wait == 60 || this.wait == 180) {
+				this.img = images["DKSPR1"];
+				playSound("sp1");
+				this.wait ++;
+			}
+			else if (this.wait == 240) {
+				this.img = images["DKSP2"];
+				this.wait ++;
+			}
+			else if (this.wait == 300) {
+				this.img = images["DKSP3"];
+				this.wait ++;
+			}
+			else if (this.wait == 301) {
+				this.img = images["DK"];
+				this.megAttack = false;
+			}
+			else {
+				this.wait ++;
+			}
+		
 		}else if(Math.floor(Math.random() * Math.floor(4)) == 0 && !this.megAttack && time == 0){
 			this.atk = true;
-		}/*else if(Math.floor(Math.random() * Math.floor(5)) == 0 && !this.atk && time == 0){
+		}else if(Math.floor(Math.random() * Math.floor(5)) == 0 && !this.atk && time == 0){
 			this.megAttack = true;
-		}*/
-	}
-	
-	donkeyFinalAttack(){
-		if(this.megAttack){
 		}
-	
 	}
+	
 }

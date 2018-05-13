@@ -19,6 +19,7 @@ let musicisload = false;
 ////////////////////////
 var level = 1;
 let tonneaux = [];
+let tonneauxBleu = [];
 let levelList = [];
 let actualLevel;
 let dKong;
