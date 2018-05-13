@@ -50,6 +50,7 @@ class donkeyKong{
 			else if (this.wait == 301) {
 				this.img = images["DK"];
 				this.megAttack = false;
+				this.wait = 0;
 			}
 			else {
 				this.wait ++;

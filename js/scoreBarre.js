@@ -14,6 +14,7 @@ function afficheScore(){
 	ctx.font = sizeOfFont +'px serif';
 	ctx.fillStyle='white';
 	ctx.fillText('SCORE',0, canvas.height/25);
+	ctx.fillStyle='white';
 	if(joueur.score != 0){
 		cond = 5 - (Math.log10(joueur.score));
 	}else{
@@ -23,13 +24,14 @@ function afficheScore(){
 		ctx.fillText("0",0+(canvas.width/35 * i),canvas.height/11);
 	}
 	ctx.fillText(joueur.score,(canvas.width/35 * i),canvas.height/11);
+	afficheHighScore(canvas.width/3,canvas.height/25);
 }
 
 
 function afficheLife(){
 	ctx.save();
 	for(i = 0;i<joueur.life;i++){
-		ctx.drawImage(images["life"],(canvas.width/1.8) + (canvas.width/15*i)
+		ctx.drawImage(images["life"],(canvas.width/1.6) + (canvas.width/15*i)
 		,canvas.height/50,canvas.width/20,canvas.height/18);
 	}
 	ctx.drawImage(images["01R"],canvas.width-(canvas.width/15)
@@ -46,8 +48,8 @@ function afficheLevel(){
 	var sizeOfFont = String(canvas.height/18);
 	ctx.font = sizeOfFont +'px serif';
 	ctx.fillStyle='white';
-    ctx.fillText('LEVEL',canvas.width/3, canvas.height/25);
-	ctx.fillText(level,(canvas.width/3)+(canvas.height/14),canvas.height/11);
+    ctx.fillText('LVL',canvas.width/2, canvas.height/25);
+	ctx.fillText(level,(canvas.width/2.3)+(canvas.height/14),canvas.height/11);
 }
 
 function afficheMarteau() {

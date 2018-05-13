@@ -84,21 +84,21 @@ function afficheFond(){
 	ctx.restore();
 }
 
-function afficheHighScore(){
+function afficheHighScore(x,y){
 	var sizeOfFont = String(canvas.height/18);
 	ctx.font = sizeOfFont +'px serif';
-	ctx.fillStyle='white';
-	ctx.fillText("HIGHSCORE",canvas.width/3,canvas.height/1.15);
+	ctx.fillStyle='red';
+	ctx.fillText("HiSCORE", x - (canvas.width/30 * 3.5),y);
 	if(localStorage.getItem("highScore") != null && localStorage.getItem("highScore") != 0){
 		cond = 5 - (Math.log10(localStorage.getItem("highScore")));
 	}else{
 		cond = 6;
 	}
 	for(i = 0; i < cond;i++){
-		ctx.fillText("0",canvas.width/2.5+(canvas.width/35 * i),canvas.height/1.05);
+		ctx.fillText("0",x - (canvas.width/30 * 2.4) +(canvas.width/35 * i),y + canvas.height/19.5);
 	}
 	if(localStorage.getItem("highScore") != null){
-		ctx.fillText(localStorage.getItem("highScore"),canvas.width/2.5 + (canvas.width/35 * i),canvas.height/1.05);
+		ctx.fillText(localStorage.getItem("highScore"),x - (canvas.width/30 * 2.4) + (canvas.width/35 * i),y + canvas.height/19.5);
 	}
 }
 

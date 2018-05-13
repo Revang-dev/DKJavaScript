@@ -91,7 +91,7 @@ function animation() {
 		}
 		ctx.globalAlpha = startb;
 		ctx.fillText('Press Spacebar',canvas.width/3,(canvas.height/9));
-		afficheHighScore();
+		afficheHighScore(canvas.width/2,canvas.width/1.15);
 		ctx.restore();
 		
 	}else{
