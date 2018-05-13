@@ -64,11 +64,11 @@ class Plateform{
 }
 
 class Tonneau {
-  constructor(cx, cy,r,v) {
+  constructor(cx, cy,v) {
     this.x = cx || 0;
     this.y = cy || 0;
-	this.h = r || canvas.height/50;
-	this.l = r || canvas.height/50;
+	this.h = canvas.height/50;
+	this.l = canvas.height/50;
     this.vitesseX = v || 1; 
     this.vitesseY = 0;
     this.fall = false;
@@ -105,13 +105,21 @@ class Tonneau {
   }
   
   direction(y1,y2){
-	  if(y1 < y2){
+	if(y1 < y2){
 		this.vitesseX = 1;
 	}else if (y1 > y2){
 		this.vitesseX = -1;		
 	}else{
-		if(this.x == canvas.width/2){
-			if(Math.floor(Math.random() * Math.floor(2)) < 0){
+		var rand = Math.floor(Math.random() * Math.floor(2));
+		if(actualLevel.color == 'blue' && this.y <= dKong.y + dKong.h + 10){
+			if(rand == 0){
+				this.vitesseX = -1;
+			}else{
+				this.vitesseX = 1;
+			}
+		}
+		else if(this.x == canvas.width/2){
+			if(rand < 0){
 				this.vitesseX = -1;
 			}else{
 				this.vitesseX = 1;

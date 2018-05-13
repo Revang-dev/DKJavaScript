@@ -10,6 +10,7 @@ class donkeyKong{
 		this.megAttack = false;
 		this.fall = false;
 		this.DKJump;
+		this.easy = 3;
 	}
 	
 	draw(ctx){
@@ -19,9 +20,14 @@ class donkeyKong{
 	}	
 
 	donkeyAttack(){
+		if(Math.floor(level/3) < this.easy){
+			var num = this.easy-Math.floor(level/3);	
+		}else{
+			var num = 0;
+		}
 		if(this.atk){
 			if(this.wait == 80){
-				tonneaux.push(new Tonneau(this.x + (this.l/2),this.y + (this.h/1.5)));
+				tonneaux.push(new Tonneau(this.x + (this.l/2),this.y + (this.h/1.5),0));
 				this.img = images["DK"];
 				this.wait = 0;
 				this.atk = false;
@@ -77,10 +83,9 @@ class donkeyKong{
 			else {
 				this.wait ++;
 			}
-		
-		}else if(Math.floor(Math.random() * Math.floor(4)) == 0 && !this.megAttack && time == 0){
+		}else if(Math.floor(Math.random() * Math.floor(3 + num)) == 0 && !this.megAttack && time == 0){
 			this.atk = true;
-		}else if(Math.floor(Math.random() * Math.floor(5)) == 0 && !this.atk && time == 0 && level > 3){
+		}else if(Math.floor(Math.random() * Math.floor(4 + num)) == 0 && !this.atk && time == 0 && level > 3){
 			this.megAttack = true;
 		}
 	}
