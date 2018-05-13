@@ -142,6 +142,11 @@ function startGame(){
 		joueur.rest();
 		timeUpdate = 0;
 		game = true;
+		if (!musicisload) {
+			var lvlmusic = ((level - 1) % 3) + 1;
+			playMusic("music" + lvlmusic);
+			musicisload = true;
+		}
 		if(sessionStorage.getItem("highscore") != null){
 			joueur.score =  sessionStorage.getItem("highScore");
 		}

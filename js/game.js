@@ -62,12 +62,6 @@ function animation() {
 		if(time == 100){
 			time = 0;
 		}
-		if (!musicisload) {
-			var lvlmusic = ((level - 1) % 3) + 1;
-			playMusic("music" + lvlmusic);
-			musicisload = true;
-		}
-  
 	// 2 on dessine et on deplace
 	dessineEtDeplaceLesObjets();
   
@@ -126,6 +120,12 @@ function dessineEtDeplaceLesObjets() {
 		afficheScore();
 		afficheLife();
 		afficheLevel();
+		musicisload = false;
+		if (!musicisload) {
+			var lvlmusic = ((level - 1) % 3) + 1;
+			playMusic("music" + lvlmusic);
+			musicisload = true;
+	}
  
 	}else if (!joueur.dead){
 		dKong.donkeyAttack();

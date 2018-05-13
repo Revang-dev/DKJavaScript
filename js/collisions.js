@@ -94,6 +94,8 @@ function testCollisionJoueursEnnemis() {
 			}else if(joueur.life == 0){
 				sound.volume = 0.9;
 				playSound("loselife");
+				stopMusic();
+				musicisload = false;
 				joueur.retry--;
 				joueur.endD = joueur.y + joueur.h;
 				joueur.life = 3;
