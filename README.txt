@@ -65,3 +65,4 @@ Points forts :
 - Les collisions
 - High-Score avec cookies
 - Jeu fluide
+- Idée non simpliste
