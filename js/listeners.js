@@ -1,6 +1,6 @@
 function traiteKeydown(evt) {
 	let code = evt.code;
-	if (game) {
+	if (game && !joueur.dead) {
 		if (evt.keyCode == 32) {
 			useHammer();
 		}

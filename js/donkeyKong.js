@@ -18,11 +18,14 @@ class donkeyKong{
 
 	donkeyAttack(){
 		if(this.atk){
-			if(this.wait == 60){
+			if(this.wait == 80){
 				tonneaux.push(new Tonneau(this.x + (this.l/2),this.y + (this.h/1.5)));
 				this.img = images["DK"];
 				this.wait = 0;
 				this.atk = false;
+			}else if(this.wait <= 40){
+				this.img = images["DKA2"];
+				this.wait ++;
 			}else{
 				this.img = images["DKA"];
 				this.wait ++;
@@ -47,7 +50,7 @@ class donkeyKong{
 				this.img = images["DKSP3"];
 				this.wait ++;
 			}
-			else if (this.wait == 301) {
+			else if (this.wait == 360) {
 				this.img = images["DK"];
 				this.megAttack = false;
 				this.wait = 0;

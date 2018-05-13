@@ -24,7 +24,7 @@ function afficheScore(){
 		ctx.fillText("0",0+(canvas.width/35 * i),canvas.height/11);
 	}
 	ctx.fillText(joueur.score,(canvas.width/35 * i),canvas.height/11);
-	afficheHighScore(canvas.width/3,canvas.height/25);
+	afficheHighScore(canvas.width/3.26,canvas.height/25);
 }
 
 
@@ -48,8 +48,8 @@ function afficheLevel(){
 	var sizeOfFont = String(canvas.height/18);
 	ctx.font = sizeOfFont +'px serif';
 	ctx.fillStyle='white';
-    ctx.fillText('LVL',canvas.width/2, canvas.height/25);
-	ctx.fillText(level,(canvas.width/2.3)+(canvas.height/14),canvas.height/11);
+    ctx.fillText('LVL',canvas.width/2.3, canvas.height/25);
+	ctx.fillText(level,(canvas.width/2.13),canvas.height/11);
 }
 
 function afficheMarteau() {

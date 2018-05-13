@@ -140,11 +140,6 @@ function dessineEtDeplaceLesObjets() {
 		afficheLife();
 		afficheLevel();
 		afficheMarteau();
-		if(player.endD == 0){
-			ctx.globalCompositeOperation='destination-over';
-			ctx.fillStyle='black';
-			ctx.fillRect(0,0,cw,ch);
-		}
 	}else{
 		dKong.donkeyAttack();
 		afficheScore();
@@ -168,7 +163,14 @@ function dessineEtDeplaceLesObjets() {
 		})
 		marteau.draw(ctx);
 		joueur.move();
-	}  
+		
+	} 
+	if(canvas.width - timeUpdate >= 1 && joueur.dead){
+			ctx.globalCompositeOperation='destination-over';
+			ctx.fillStyle='black';
+			ctx.fillRect(0,0,canvas.width,canvas.height);
+			ctx.globalCompositeOperation='source-over';
+		}	
 
 }
 

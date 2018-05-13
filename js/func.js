@@ -19,6 +19,7 @@ function loadAllImage(){
   loadImage("coins02");
   loadImage("DK");
   loadImage("DKA");
+  loadImage("DKA2");
   loadImage("DKG01");
   loadImage("DKG02");
   loadImage("JL");
@@ -48,7 +49,7 @@ function circle(){
 		ctx.arc(joueur.x+(joueur.l/2),joueur.y+(joueur.h/2),canvas.width - timeUpdate,0,Math.PI*2);
 		ctx.closePath();
 		ctx.fill();
-		ctx.restore;
+		ctx.globalCompositeOperation='source-atop';
 	}else{
 		game = false;
 		timeUpdate = 0;

@@ -35,7 +35,7 @@ class player{
 	  this.img = images["01R"];
 	  this.hit = false;
 	  this.score = 0;
-	  this.life = 3;
+	  this.life = 1;
 	  this.retry = 5;
 	  this.opacity = 1;
 	  this.moving = false;
@@ -46,10 +46,10 @@ class player{
 	  this.marteau = false;
 	  this.onPlatform = true;
 	  this.dead = false;
-	  this.endD = 0;
+	  this.endD = -1;
     }
     rest(){
-		this.images = ["01R"];
+		this.img = images["01R"];
 		this.hit = false;
 		this.opacity = 1;
 		this.moving = false;
@@ -59,6 +59,7 @@ class player{
 		this.dead =false;
 		this.x = actualLevel.startx;
 		this.y= actualLevel.starty;
+		this.endD = -1;
 		tonneaux = [];
 	}
 	
