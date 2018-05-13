@@ -146,7 +146,7 @@ function marioAtDK(){
 		winner = true;
 		pnt = joueur.score;
 		marteau = new Marteau();
-		player.marteau = false;
+		joueur.marteau = false;
 		stopMusic();
 	}
 }

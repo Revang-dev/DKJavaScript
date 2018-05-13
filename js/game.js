@@ -60,7 +60,8 @@ function animation() {
 			time = 0;
 		}
 		if (!musicisload) {
-			playMusic("music" + level);
+			var lvlmusic = ((level - 1) % 3) + 1;
+			playMusic("music" + lvlmusic);
 			musicisload = true;
 		}
 	// 1 on efface
