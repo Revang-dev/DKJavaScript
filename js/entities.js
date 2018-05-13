@@ -36,7 +36,7 @@ class player{
 	  this.hit = false;
 	  this.score = 0;
 	  this.life = 1;
-	  this.retry = 5;
+	  this.retry = 1;
 	  this.opacity = 1;
 	  this.moving = false;
 	  this.fall = false;

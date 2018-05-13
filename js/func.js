@@ -44,6 +44,7 @@ function circle(){
 		ctx.arc(joueur.x+(joueur.l/2),joueur.y+(joueur.h/2),canvas.width - timeUpdate,0,Math.PI*2);
 		ctx.closePath();
 		ctx.fill();
+		ctx.restore;
 	}else{
 		game = false;
 		timeUpdate = 0;
@@ -65,6 +66,9 @@ function startGame(){
 		joueur.rest();
 		timeUpdate = 0;
 		game = true;
+		if(sessionStorage.getItem("highscore") != null){
+			joueur.score =  sessionStorage.getItem("highScore");
+		}
 		
 	}
 }
@@ -75,6 +79,25 @@ function afficheFond(){
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 	ctx.restore();
 }
+
+function afficheHighScore(){
+	var sizeOfFont = String(canvas.height/18);
+	ctx.font = sizeOfFont +'px serif';
+	ctx.fillStyle='white';
+	ctx.fillText("HIGHSCORE",canvas.width/3,canvas.height/1.15);
+	if(sessionStorage.getItem("highScore") != null && sessionStorage.getItem("highScore") != 0){
+		cond = 5 - (Math.log10(sessionStorage.getItem("highScore")));
+	}else{
+		cond = 6;
+	}
+	for(i = 0; i < cond;i++){
+		ctx.fillText("0",canvas.width/2.5+(canvas.width/35 * i),canvas.height/1.05);
+	}
+	if(sessionStorage.getItem("highScore") != null){
+		ctx.fillText(sessionStorage.getItem("highScore"),canvas.width/2.5 + (canvas.width/35 * i),canvas.height/1.05);
+	}
+}
+
 
 function AnimJump() {
   if (!joueur.fall) {

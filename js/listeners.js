@@ -45,7 +45,7 @@ function traiteKeydown(evt) {
 			}
 		}
 		else {
-			if (evt.keyCode == 32) {
+			if (evt.keyCode == 32 && menu) {
 				menu = false;
 				timeUpdate = 0;
 				playSound("start");

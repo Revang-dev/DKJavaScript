@@ -87,6 +87,10 @@ function testCollisionJoueursEnnemis() {
 				sound.volume = 0.4;
 				playSound("gameover");
 				stopMusic();
+				if(sessionStorage.getItem("highScore") < joueur.score){
+					sessionStorage.setItem("highScore",joueur.score);
+				}
+				console.log(sessionStorage.getItem("highScore"));
 				gameOver = true;
 			}else if(joueur.life == 0){
 				sound.volume = 0.9;
