@@ -3,6 +3,7 @@ function mainMenu(){
 	afficheFond();
 	ctx.globalAlpha = 1;
 	ctx.drawImage(images["titleDK"], 0, canvas.height/2 -canvas.height/3, canvas.width, canvas.height/3);
+	ctx.drawImage(images["RMGD"], canvas.width/1.5, canvas.height/1.5, canvas.width/3, canvas.height/3);
 	ctx.drawImage(images["DK"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
 	var sizeOfFont = String(canvas.height/18);
 	ctx.font = sizeOfFont +'px serif';
@@ -19,33 +20,43 @@ function mainMenu(){
 
 function startAnimation(){
 	ctx.save();
-	
 	afficheFond();
 	timeUpdate++;
-	if(timeUpdate >= canvas.height/2 && timeUpdate <= canvas.height/2 + 220){
+	var mult = 40;
+	if(timeUpdate >= canvas.height/2 && timeUpdate <= canvas.height/2 + mult * 8){
 		if (!sound_title) {
 			playSound("title");
 			sound_title = true;
 		}
 		ctx.drawImage(images["titleDK"], 0, canvas.height/2 -canvas.height/3, canvas.width, canvas.height/3);
-		if((timeUpdate <= canvas.height/2 + 80 && timeUpdate >= canvas.height/2 + 40) || (timeUpdate <= canvas.height/2 + 160 && timeUpdate >= canvas.height/2 + 120)){
+		if((timeUpdate <= canvas.height/2 + mult * 4 && timeUpdate >= canvas.height/2 + mult * 1)){
+			if (playing) {
+				playSound("JCVD");
+				playing = false;
+			}
+			ctx.drawImage(images["RMGD"], canvas.width/1.5, canvas.height/1.5, canvas.width/3, canvas.height/3);
+			ctx.drawImage(images["DK"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
+		} else if((timeUpdate <= canvas.height/2 + mult * 5 && timeUpdate >= canvas.height/2  + mult * 4) || (timeUpdate <= canvas.height/2 + mult * 7 && timeUpdate >= canvas.height/2 + mult * 6)){
 			if (!playing) {
 				playSound("sp1");
 				playing = true;
 			}
+			ctx.drawImage(images["RMGD"], canvas.width/1.5, canvas.height/1.5, canvas.width/3, canvas.height/3);
 			ctx.drawImage(images["DKG01"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
-		}else if((timeUpdate <= canvas.height/2 + 120 && timeUpdate >= canvas.height/2 + 80)||(timeUpdate <= canvas.height/2 + 200 && timeUpdate >= canvas.height/2 + 120)){
+		}else if((timeUpdate <= canvas.height/2 + mult * 6 && timeUpdate >= canvas.height/2 + mult * 5)||(timeUpdate <= canvas.height/2 + mult * 8 && timeUpdate >= canvas.height/2 + mult * 7)){
 			if (playing) {
 				playSound("sp1");
 				playing = false;
 			}
+			ctx.drawImage(images["RMGD"], canvas.width/1.5, canvas.height/1.5, canvas.width/3, canvas.height/3);
 			ctx.drawImage(images["DKG02"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
 		}else{
 			ctx.drawImage(images["DK"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
 		}
-	}else if(timeUpdate >= canvas.height/2 + 220){
+	}else if(timeUpdate >= canvas.height/2 + mult * 8){
 		startM = false;
 		ctx.drawImage(images["titleDK"], 0, canvas.height/2 -canvas.height/3, canvas.width, canvas.height/3);
+		ctx.drawImage(images["RMGD"], canvas.width/1.5, canvas.height/1.5, canvas.width/3, canvas.height/3);
 		ctx.drawImage(images["DK"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
 		timeUpdate = 0;
 	}else{

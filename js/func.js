@@ -1,4 +1,4 @@
-var playing = false;
+var playing = true;
 var sound_title = false;
 
 function loadImage(name) {
@@ -47,6 +47,7 @@ function loadAllImage(){
   loadImage("titleDK");
   loadImage("Dcircle");
   loadImage("DK_die");
+  loadImage("RMGD");
 }
 
 function afficheFond(){
