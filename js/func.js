@@ -32,7 +32,6 @@ function loadAllImage(){
   loadImage("T04");
   loadImage("TF01");
   loadImage("TF02");
-  loadImage("title");
   loadImage("bonus");
   loadImage("01D");
   loadImage("DKSPL1");
@@ -43,7 +42,53 @@ function loadAllImage(){
   loadImage("TB2");
   loadImage("TB3");
   loadImage("TB4");
+   loadImage("titleDK");
 }
+
+function startAnimation(){
+	ctx.save();
+	afficheFond();
+	timeUpdate++;
+	if(timeUpdate >= canvas.height/2 && timeUpdate <= canvas.height/2 + 220){
+		ctx.drawImage(images["titleDK"], 0, canvas.height/2 -canvas.height/3, canvas.width, canvas.height/3);
+		if((timeUpdate <= canvas.height/2 + 80 && timeUpdate >= canvas.height/2 + 40) || (timeUpdate <= canvas.height/2 + 160 && timeUpdate >= canvas.height/2 + 120)){
+			ctx.drawImage(images["DKG01"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
+		}else if((timeUpdate <= canvas.height/2 + 120 && timeUpdate >= canvas.height/2 + 80)||(timeUpdate <= canvas.height/2 + 200 && timeUpdate >= canvas.height/2 + 120)){
+			ctx.drawImage(images["DKG02"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
+		}else{
+			ctx.drawImage(images["DK"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
+		}
+	}else if(timeUpdate >= canvas.height/2 + 220){
+		startM = false;
+		ctx.drawImage(images["titleDK"], 0, canvas.height/2 -canvas.height/3, canvas.width, canvas.height/3);
+		ctx.drawImage(images["DK"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
+		timeUpdate = 0;
+	}else{
+		ctx.drawImage(images["titleDK"], 0, timeUpdate -canvas.height/3, canvas.width, canvas.height/3);
+	}
+	ctx.restore;
+}
+
+function mainMenu(){
+	ctx.save();
+	afficheFond();
+	ctx.globalAlpha = 1;
+	ctx.drawImage(images["titleDK"], 0, canvas.height/2 -canvas.height/3, canvas.width, canvas.height/3);
+	ctx.drawImage(images["DK"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
+	var sizeOfFont = String(canvas.height/18);
+	ctx.font = sizeOfFont +'px serif';
+	ctx.fillStyle = "white";
+	startb += startm * 0.01;
+	if (startb <= 0.5 || startb >= 1) {
+		startm = -startm;
+	}
+	ctx.globalAlpha = startb;
+	ctx.fillText('Press Spacebar',canvas.width/3,(canvas.height/9));
+	afficheHighScore(canvas.width/2,canvas.width/1.15);
+	ctx.restore();
+}
+
+
 
 function circle(){
 	if(canvas.width - timeUpdate >= 1){

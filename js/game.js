@@ -28,12 +28,12 @@ var startm = 1;
 var gameOver = false;
 var winner  = false;
 var menu = true;
+var startM = true;
 
 
 // main.js
 function init() {
 	console.log("page chargee");
-	console.log(sessionStorage.getItem("highScore"));
 	canvas = document.querySelector("#myCanvas");
 	ctx = canvas.getContext("2d");
 	loadAllImage();
@@ -56,6 +56,7 @@ function init() {
 
 // Boucle d'animation
 function animation() {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	if (game) {
 		time++;
 		if(time == 100){
@@ -66,8 +67,6 @@ function animation() {
 			playMusic("music" + lvlmusic);
 			musicisload = true;
 		}
-	// 1 on efface
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
   
 	// 2 on dessine et on deplace
 	dessineEtDeplaceLesObjets();
@@ -78,24 +77,12 @@ function animation() {
 	// 4 on rappelle la boucle d'animation 60 fois / s
 
 	}
-	else if(menu){
-		ctx.save();
-		ctx.globalAlpha = 1;
-		ctx.drawImage(images["title"], 0, 0, canvas.width, canvas.height);
-		var sizeOfFont = String(canvas.height/18);
-		ctx.font = sizeOfFont +'px serif';
-		ctx.fillStyle = "white";
-		startb += startm * 0.01;
-		if (startb <= 0.5 || startb >= 1) {
-			startm = -startm;
-		}
-		ctx.globalAlpha = startb;
-		ctx.fillText('Press Spacebar',canvas.width/3,(canvas.height/9));
-		afficheHighScore(canvas.width/2,canvas.width/1.15);
-		ctx.restore();
-		
-	}else{
+	else if(menu && !startM){
+		mainMenu();
+	}else if(!menu && !startM){
 		startGame();
+	}else{
+		startAnimation();
 	}
 	requestAnimationFrame(animation);
 }

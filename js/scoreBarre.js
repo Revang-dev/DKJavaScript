@@ -70,6 +70,9 @@ function afficheWin(){
 		actualLevel = levelList[(level-1)%3];
 		actualLevel.initLevel();
 		joueur.rest();
+		if(localStorage.getItem("highScore") < joueur.score){
+			localStorage.setItem("highScore",joueur.score);
+		}
 		tonneaux = [];
 	}
 }

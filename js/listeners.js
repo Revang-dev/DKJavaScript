@@ -45,11 +45,13 @@ function traiteKeydown(evt) {
 			}
 		}
 		else {
-			if (evt.keyCode == 32 && menu) {
+			if (evt.keyCode == 32 && menu && !startM) {
 				menu = false;
 				timeUpdate = 0;
 				playSound("start");
 				requestAnimationFrame(animation);
+			}else if(evt.keyCode == 32 && menu && startM){
+				startM = false;
 			}
 		}
 }
