@@ -37,7 +37,7 @@ function init() {
 	ctx = canvas.getContext("2d");
 	loadAllImage();
 	marteau = new Marteau();
-	levelList.push(new levelT3());
+	levelList.push(new levelT1());
 	levelList.push(new levelT2());
 	levelList.push(new levelT3());
 	actualLevel = levelList[0];

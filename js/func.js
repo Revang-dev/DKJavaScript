@@ -85,16 +85,16 @@ function afficheHighScore(){
 	ctx.font = sizeOfFont +'px serif';
 	ctx.fillStyle='white';
 	ctx.fillText("HIGHSCORE",canvas.width/3,canvas.height/1.15);
-	if(sessionStorage.getItem("highScore") != null && sessionStorage.getItem("highScore") != 0){
-		cond = 5 - (Math.log10(sessionStorage.getItem("highScore")));
+	if(localStorage.getItem("highScore") != null && localStorage.getItem("highScore") != 0){
+		cond = 5 - (Math.log10(localStorage.getItem("highScore")));
 	}else{
 		cond = 6;
 	}
 	for(i = 0; i < cond;i++){
 		ctx.fillText("0",canvas.width/2.5+(canvas.width/35 * i),canvas.height/1.05);
 	}
-	if(sessionStorage.getItem("highScore") != null){
-		ctx.fillText(sessionStorage.getItem("highScore"),canvas.width/2.5 + (canvas.width/35 * i),canvas.height/1.05);
+	if(localStorage.getItem("highScore") != null){
+		ctx.fillText(localStorage.getItem("highScore"),canvas.width/2.5 + (canvas.width/35 * i),canvas.height/1.05);
 	}
 }
 
