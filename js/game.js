@@ -120,6 +120,7 @@ function dessineEtDeplaceLesObjets() {
 		afficheScore();
 		afficheLife();
 		afficheLevel();
+		DK_death();
 		musicisload = false;
 		if (!musicisload) {
 			var lvlmusic = ((level - 1) % 3) + 1;

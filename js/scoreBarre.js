@@ -61,7 +61,8 @@ function afficheMarteau() {
 
 function resetLevel(){
 	time = 0;
-	winner = false
+	winner = false;
+	dKong.fall = false;
 	musicisload = false;
 	levelList.splice(0,1);
 	if((level-1)%3 == 0){
@@ -82,6 +83,7 @@ function resetLevel(){
 		localStorage.setItem("highScore",joueur.score);
 	}
 	tonneaux = [];
+	tonneauxBleu = [];
 }
 
 function afficheWin(){

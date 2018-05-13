@@ -9,6 +9,7 @@ class donkeyKong{
 		this.wait = 0;
 		this.atk = false;
 		this.megAttack = false;
+		this.fall = false;
 	}
 	
 	draw(ctx){

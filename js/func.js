@@ -1,5 +1,6 @@
 var playing = false;
 var sound_title = false;
+var DKJump;
 
 function loadImage(name) {
 
@@ -46,6 +47,7 @@ function loadAllImage(){
   loadImage("TB4");
   loadImage("titleDK");
   loadImage("Dcircle");
+  loadImage("DK_die");
 }
 
 function startAnimation(){
@@ -85,6 +87,24 @@ function startAnimation(){
 	ctx.restore;
 }
 
+function DK_death(){
+	ctx.save();
+	if (dKong.y > DKJump && !dKong.fall) {
+		dKong.y -= 0.4;
+		dKong.img = images["DK_die"];
+		if (dKong.y <= DKJump) {
+			dKong.fall = true;
+		}
+	}
+	else if ((dKong.y - 2 * dKong.h) < canvas.height) {
+		dKong.y += 2;
+	}
+	else {
+		dKong.img = images["DK"];
+		afficheWin();
+	}
+	ctx.restore;
+}
 function mainMenu(){
 	ctx.save();
 	afficheFond();
@@ -245,6 +265,7 @@ function AnimClimb(dir){
 function marioAtDK(){
 	if(!joueur.dead && joueur.y + joueur.h <= dKong.y+dKong.h && joueur.x + joueur.l <= dKong.x+dKong.l && joueur.x >= 0 && !winner){
 		winner = true;
+		DKJump = dKong.y - dKong.h / 4;
 		pnt = joueur.score;
 		marteau = new Marteau();
 		joueur.marteau = false;

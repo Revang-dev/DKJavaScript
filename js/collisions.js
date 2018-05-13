@@ -77,7 +77,7 @@ function testeCollisionsAvecMurs(r) {
 function testCollisionJoueursEnnemis() {
   tonneaux.forEach((el) => {
         if(rectsOverlap(joueur.x, joueur.y, joueur.l, joueur.h,
-                 el.x-el.l, el.y-el.h, el.l*2, el.h*2) && !joueur.hit && !joueur.dead) {
+                 el.x-el.l, el.y-el.h, el.l*2, el.h*2) && !joueur.hit && !joueur.dead && !winner) {
 			joueur.life--;
 			if (joueur.life > -1) {
 				sound.volume = 0.6;
@@ -118,7 +118,7 @@ function testCollisionJoueursEnnemis() {
   
   tonneauxBleu.forEach((el) => {
         if(rectsOverlap(joueur.x, joueur.y, joueur.l, joueur.h,
-                 el.x-el.l, el.y-el.h, el.l*2, el.h*2) && !joueur.hit && !joueur.dead) {
+                 el.x-el.l, el.y-el.h, el.l*2, el.h*2) && !joueur.hit && !joueur.dead && !winner) {
 			joueur.life--;
 			if (joueur.life > -1) {
 				sound.volume = 0.6;
