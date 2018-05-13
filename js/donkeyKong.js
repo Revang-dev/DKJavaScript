@@ -1,4 +1,3 @@
-
 class donkeyKong{
 	constructor(x){
 		this.x = x;
@@ -10,6 +9,7 @@ class donkeyKong{
 		this.atk = false;
 		this.megAttack = false;
 		this.fall = false;
+		this.DKJump;
 	}
 	
 	draw(ctx){
@@ -85,4 +85,38 @@ class donkeyKong{
 		}
 	}
 	
+}
+
+function DK_death(){
+	ctx.save();
+	if (dKong.y > dKong.DKjump && !dKong.fall) {
+		dKong.y -= 0.4;
+		dKong.img = images["DK_die"];
+		if (dKong.y <= dKong.DKjump) {
+			dKong.fall = true;
+		}
+	}
+	else if ((dKong.y - 2 * dKong.h) < canvas.height) {
+		dKong.y += 2;
+	}
+	else {
+		dKong.img = images["DK"];
+		afficheWin();
+		afficheScore();
+		afficheLife();
+		afficheLevel();
+	}
+	ctx.restore;
+}
+
+function marioAtDK(){
+	if(!joueur.dead && joueur.y + joueur.h <= dKong.y+dKong.h && joueur.x + joueur.l <= dKong.x+dKong.l && joueur.x >= 0 && !winner){
+		winner = true;
+		dKong.DKjump = dKong.y - dKong.h / 4;
+		pnt = joueur.score;
+		marteau = new Marteau();
+		joueur.marteau = false;
+		stopMusic();
+		playSound("onDK");
+	}
 }

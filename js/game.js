@@ -51,8 +51,6 @@ function init() {
 	requestAnimationFrame(animation);
 }
 
-
-
 // Boucle d'animation
 function animation() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -116,10 +114,6 @@ function dessineEtDeplaceLesObjets() {
 	if(gameOver){
 		YouDied();
 	}else if(winner){
-		afficheWin();
-		afficheScore();
-		afficheLife();
-		afficheLevel();
 		DK_death();
 		musicisload = false;
 		if (!musicisload) {

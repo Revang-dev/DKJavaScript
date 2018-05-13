@@ -27,7 +27,6 @@ function afficheScore(){
 	afficheHighScore(canvas.width/3.26,canvas.height/25);
 }
 
-
 function afficheLife(){
 	ctx.save();
 	for(i = 0;i<joueur.life;i++){
@@ -122,3 +121,22 @@ function YouDied(){
 		 window.location.reload(1);
 	}
 }
+
+function afficheHighScore(x,y){
+	var sizeOfFont = String(canvas.height/18);
+	ctx.font = sizeOfFont +'px serif';
+	ctx.fillStyle='red';
+	ctx.fillText("HiSCORE", x - (canvas.width/30 * 3.5),y);
+	if(localStorage.getItem("highScore") != null && localStorage.getItem("highScore") != 0){
+		cond = 5 - (Math.log10(localStorage.getItem("highScore")));
+	}else{
+		cond = 6;
+	}
+	for(i = 0; i < cond;i++){
+		ctx.fillText("0",x - (canvas.width/30 * 2.4) +(canvas.width/35 * i),y + canvas.height/19.5);
+	}
+	if(localStorage.getItem("highScore") != null){
+		ctx.fillText(localStorage.getItem("highScore"),x - (canvas.width/30 * 2.4) + (canvas.width/35 * i),y + canvas.height/19.5);
+	}
+}
+
