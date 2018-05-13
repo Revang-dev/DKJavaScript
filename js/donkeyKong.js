@@ -8,6 +8,7 @@ class donkeyKong{
 		this.img = images["DK"];
 		this.wait = 0;
 		this.atk = false;
+		this.megAttack = false;
 	}
 	
 	draw(ctx){

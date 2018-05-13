@@ -62,6 +62,9 @@ class player{
 		this.endD = -1;
 		tonneaux = [];
 		tonneauxBleu = [];
+		dKong.wait = 0;
+		dKong.atk = false;
+		dKong.megaatk = false;
 	}
 	
 	stop(){
@@ -286,7 +289,7 @@ class Marteau {
 			if (this.x == 0 && this.y == 0) {
 				var tmp = Math.floor(Math.random() * actualLevel.plateform.length);
 				var myPlateform = actualLevel.plateform[tmp];
-				this.x = myPlateform.x1 + Math.floor(Math.random() * (myPlateform.x2 - myPlateform.x1)) - this.l;
+				this.x = myPlateform.x1 + Math.floor(Math.random() * (myPlateform.x2 - myPlateform.x1));
 				this.y = myPlateform.y1 + Math.floor((myPlateform.y2 - myPlateform.y1) / (myPlateform.x2 - myPlateform.x1) * this.x) - this.h;
 			}
 			ctx.save();
