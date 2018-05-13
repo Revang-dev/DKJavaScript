@@ -1,5 +1,3 @@
-// Une classe pour le rectangle
-// typiquement dans rectangle.js
 class bonus {
     constructor(x, y) {
       this.x = x || 0;
@@ -35,8 +33,8 @@ class player{
 	  this.img = images["01R"];
 	  this.hit = false;
 	  this.score = 0;
-	  this.life = 1;
-	  this.retry = 5;
+	  this.life = 3;
+	  this.retry = 3;
 	  this.opacity = 1;
 	  this.moving = false;
 	  this.fall = false;

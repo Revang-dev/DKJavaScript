@@ -59,30 +59,64 @@ function afficheMarteau() {
 	}
 }
 
+function resetLevel(){
+	time = 0;
+	winner = false
+	musicisload = false;
+	levelList.splice(0,1);
+	if((level-1)%3 == 0){
+		levelList.push(new levelT1());
+	}else if((level-1)%3 == 1){
+		levelList.push(new levelT2());
+	}else{
+		levelList.push(new levelT3());
+	}
+	level++;
+	actualLevel = levelList[0];
+	if((level-1)%3 == 0 && level > 1){
+		joueur.retry++;
+	}
+	actualLevel.initLevel();
+	joueur.rest();
+	if(localStorage.getItem("highScore") < joueur.score){
+		localStorage.setItem("highScore",joueur.score);
+	}
+	tonneaux = [];
+}
+
 function afficheWin(){
 	if(joueur.score < pnt +500){
 	joueur.score += 2;
 	}else if (joueur.score == pnt +500){
-		time = 0;
-		winner = false
-		musicisload = false;
-		level++;
-		actualLevel = levelList[(level-1)%3];
-		if((level-1)%3 == 0 && level > 1){
-			joueur.retry++;
-		}
-		actualLevel.initLevel();
-		joueur.rest();
-		if(localStorage.getItem("highScore") < joueur.score){
-			localStorage.setItem("highScore",joueur.score);
-		}
-		tonneaux = [];
+			resetLevel();
 	}
 }
 
-function afficheGameOver(){
-	var sizeOfFont = String(canvas.height/18);
+function YouDied(){
+	ctx.save();
+	timeUpdate++;
+	if(timeUpdate <= 800){
+		if(timeUpdate <= 100){
+			ctx.globalAlpha = timeUpdate/100;
+		}
+		var fontup=canvas.height/18 + timeUpdate/20;
+	}else{
+		ctx.globalAlpha = 1;
+		var fontup = canvas.height/18 + 800/20;
+	}
+	if(timeUpdate/100 <= 0.8){
+		ctx.globalAlpha = timeUpdate/100;
+	}else{
+		ctx.globalAlpha = 0.8;
+	}
+	afficheFond();
+	var sizeOfFont = String(fontup);
 	ctx.font = sizeOfFont +'px serif';
-	ctx.fillStyle = "red";
-	ctx.fillText('YOU DIED',37 * canvas.width/100,(canvas.height/15));
+	ctx.fillStyle = "red";		
+	ctx.fillText('YOU DIED',canvas.width/2 - (fontup) * 4.75/2,(canvas.height/2 + (fontup/2)));
+	ctx.globalAlpha = 1;
+	ctx.restore();
+	if(timeUpdate >= 900){
+		 window.location.reload(1);
+	}
 }

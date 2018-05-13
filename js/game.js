@@ -33,7 +33,6 @@ var startM = true;
 
 // main.js
 function init() {
-	console.log("page chargee");
 	canvas = document.querySelector("#myCanvas");
 	ctx = canvas.getContext("2d");
 	loadAllImage();
@@ -62,6 +61,7 @@ function animation() {
 		if(time == 100){
 			time = 0;
 		}
+	
 	// 2 on dessine et on deplace
 	dessineEtDeplaceLesObjets();
   
@@ -114,7 +114,7 @@ function dessineEtDeplaceLesObjets() {
     })
 	dKong.draw(ctx);
 	if(gameOver){
-		afficheGameOver();
+		YouDied();
 	}else if(winner){
 		afficheWin();
 		afficheScore();
@@ -126,7 +126,6 @@ function dessineEtDeplaceLesObjets() {
 			playMusic("music" + lvlmusic);
 			musicisload = true;
 	}
- 
 	}else if (!joueur.dead){
 		dKong.donkeyAttack();
 		afficheScore();
@@ -161,6 +160,7 @@ function dessineEtDeplaceLesObjets() {
 	if(joueur.dead){
 			circle();
 	}	
+
 }
 
 

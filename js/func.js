@@ -5,7 +5,6 @@ function loadImage(name) {
 
   images[name] = new Image();
   images[name].onload = function() { 
-      //resourceLoaded();
   }
   images[name].src = "image/" + name + ".png";
 }
@@ -105,8 +104,6 @@ function mainMenu(){
 	ctx.restore();
 }
 
-
-
 function circle(){
 	if(canvas.width*3 - timeUpdate*2 >= 1){
 		timeUpdate++;
@@ -142,6 +139,7 @@ function startGame(){
 		joueur.rest();
 		timeUpdate = 0;
 		game = true;
+		joueur.life = 3;
 		if (!musicisload) {
 			var lvlmusic = ((level - 1) % 3) + 1;
 			playMusic("music" + lvlmusic);
@@ -178,7 +176,6 @@ function afficheHighScore(x,y){
 		ctx.fillText(localStorage.getItem("highScore"),x - (canvas.width/30 * 2.4) + (canvas.width/35 * i),y + canvas.height/19.5);
 	}
 }
-
 
 function AnimJump() {
   if (!joueur.fall) {

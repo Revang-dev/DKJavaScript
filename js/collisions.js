@@ -91,6 +91,7 @@ function testCollisionJoueursEnnemis() {
 					localStorage.setItem("highScore",joueur.score);
 				}
 				gameOver = true;
+				timeUpdate = 0;
 			}else if(joueur.life == 0){
 				sound.volume = 0.9;
 				playSound("loselife");
@@ -98,7 +99,6 @@ function testCollisionJoueursEnnemis() {
 				musicisload = false;
 				joueur.retry--;
 				joueur.endD = joueur.y + joueur.h;
-				joueur.life = 3;
 				joueur.dead = true;
 				joueur.fall = false;
 				joueur.moving = false;
