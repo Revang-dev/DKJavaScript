@@ -68,6 +68,9 @@ function afficheWin(){
 		musicisload = false;
 		level++;
 		actualLevel = levelList[(level-1)%3];
+		if((level-1)%3 == 0 && level > 1){
+			joueur.retry++;
+		}
 		actualLevel.initLevel();
 		joueur.rest();
 		if(localStorage.getItem("highScore") < joueur.score){

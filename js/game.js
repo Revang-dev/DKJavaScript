@@ -97,7 +97,6 @@ function dessineEtDeplaceLesObjets() {
 		joueur.draw(ctx);
 	}
 	afficheBarre();
-	marioAtDK();
 	actualLevel.plateform.forEach((plt) => {
 		plt.draw(ctx);
 		plt.move();
@@ -164,9 +163,9 @@ function dessineEtDeplaceLesObjets() {
 			tonb.move();
 
 		})
-		
 		marteau.draw(ctx);
 		joueur.move();
+		marioAtDK();
 	}  
 	if(canvas.width - timeUpdate >= 1 && joueur.dead){
 			ctx.globalCompositeOperation='destination-over';
