@@ -1,3 +1,6 @@
+var playing = false;
+var sound_title = false;
+
 function loadImage(name) {
 
   images[name] = new Image();
@@ -47,13 +50,26 @@ function loadAllImage(){
 
 function startAnimation(){
 	ctx.save();
+	
 	afficheFond();
 	timeUpdate++;
 	if(timeUpdate >= canvas.height/2 && timeUpdate <= canvas.height/2 + 220){
+		if (!sound_title) {
+			playSound("title");
+			sound_title = true;
+		}
 		ctx.drawImage(images["titleDK"], 0, canvas.height/2 -canvas.height/3, canvas.width, canvas.height/3);
 		if((timeUpdate <= canvas.height/2 + 80 && timeUpdate >= canvas.height/2 + 40) || (timeUpdate <= canvas.height/2 + 160 && timeUpdate >= canvas.height/2 + 120)){
+			if (!playing) {
+				playSound("sp1");
+				playing = true;
+			}
 			ctx.drawImage(images["DKG01"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
 		}else if((timeUpdate <= canvas.height/2 + 120 && timeUpdate >= canvas.height/2 + 80)||(timeUpdate <= canvas.height/2 + 200 && timeUpdate >= canvas.height/2 + 120)){
+			if (playing) {
+				playSound("sp1");
+				playing = false;
+			}
 			ctx.drawImage(images["DKG02"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
 		}else{
 			ctx.drawImage(images["DK"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
@@ -225,6 +241,7 @@ function marioAtDK(){
 		marteau = new Marteau();
 		joueur.marteau = false;
 		stopMusic();
+		playSound("onDK");
 	}
 }
 

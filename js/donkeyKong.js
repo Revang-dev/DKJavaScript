@@ -39,7 +39,7 @@ class donkeyKong{
 			}
 			else if (this.wait == 60 || this.wait == 180) {
 				this.img = images["DKSPR1"];
-				playSound("sp1");
+				playSound2("sp1");
 				this.wait ++;
 			}
 			else if (this.wait == 240) {
