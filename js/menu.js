@@ -23,27 +23,27 @@ function startAnimation(){
 	afficheFond();
 	timeUpdate++;
 	var mult = 40;
-	if(timeUpdate >= canvas.height/2 && timeUpdate <= canvas.height/2 + mult * 8){
+	if(timeUpdate >= canvas.height/2 && timeUpdate <= canvas.height/2 + mult * 9){
 		if (!sound_title) {
 			playSound("title");
 			sound_title = true;
 		}
 		ctx.drawImage(images["titleDK"], 0, canvas.height/2 -canvas.height/3, canvas.width, canvas.height/3);
-		if((timeUpdate <= canvas.height/2 + mult * 4 && timeUpdate >= canvas.height/2 + mult * 1)){
+		if((timeUpdate <= canvas.height/2 + mult * 5 && timeUpdate >= canvas.height/2 + mult * 2)){
 			if (playing) {
 				playSound("JCVD");
 				playing = false;
 			}
 			ctx.drawImage(images["RMGD"], canvas.width/1.5, canvas.height/1.5, canvas.width/3, canvas.height/3);
 			ctx.drawImage(images["DK"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
-		} else if((timeUpdate <= canvas.height/2 + mult * 5 && timeUpdate >= canvas.height/2  + mult * 4) || (timeUpdate <= canvas.height/2 + mult * 7 && timeUpdate >= canvas.height/2 + mult * 6)){
+		} else if((timeUpdate <= canvas.height/2 + mult * 6 && timeUpdate >= canvas.height/2  + mult * 5) || (timeUpdate <= canvas.height/2 + mult * 8 && timeUpdate >= canvas.height/2 + mult * 7)){
 			if (!playing) {
 				playSound("sp1");
 				playing = true;
 			}
 			ctx.drawImage(images["RMGD"], canvas.width/1.5, canvas.height/1.5, canvas.width/3, canvas.height/3);
 			ctx.drawImage(images["DKG01"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
-		}else if((timeUpdate <= canvas.height/2 + mult * 6 && timeUpdate >= canvas.height/2 + mult * 5)||(timeUpdate <= canvas.height/2 + mult * 8 && timeUpdate >= canvas.height/2 + mult * 7)){
+		}else if((timeUpdate <= canvas.height/2 + mult * 7 && timeUpdate >= canvas.height/2 + mult * 6)||(timeUpdate <= canvas.height/2 + mult * 9 && timeUpdate >= canvas.height/2 + mult * 8)){
 			if (playing) {
 				playSound("sp1");
 				playing = false;
@@ -53,7 +53,7 @@ function startAnimation(){
 		}else{
 			ctx.drawImage(images["DK"], canvas.width/2 - (canvas.width/7/2), canvas.height/2, canvas.width/7, canvas.height/7);
 		}
-	}else if(timeUpdate >= canvas.height/2 + mult * 8){
+	}else if(timeUpdate >= canvas.height/2 + mult * 9){
 		startM = false;
 		ctx.drawImage(images["titleDK"], 0, canvas.height/2 -canvas.height/3, canvas.width, canvas.height/3);
 		ctx.drawImage(images["RMGD"], canvas.width/1.5, canvas.height/1.5, canvas.width/3, canvas.height/3);
