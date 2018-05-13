@@ -35,7 +35,7 @@ class player{
 	  this.img = images["01R"];
 	  this.hit = false;
 	  this.score = 0;
-	  this.life = 3;
+	  this.life = 1;
 	  this.retry = 5;
 	  this.opacity = 1;
 	  this.moving = false;

@@ -62,9 +62,9 @@ function traiteKeyup(evt) {
 			case 'ArrowRight':
 				joueur.stop();
 			case 'ArrowLeft':
-				if(joueur.vitesseX > 0){
+				if(joueur.vitesseX > 0 && !joueur.climb && !joueur.dead){
 					joueur.img = images["01R"];
-				}else{
+				}else if(!joueur.climb && !joueur.dead){
 					joueur.img = images["01L"];
 				}
 				joueur.vitesseX = 0;

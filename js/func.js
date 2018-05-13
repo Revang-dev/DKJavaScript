@@ -45,7 +45,8 @@ function loadAllImage(){
   loadImage("TB2");
   loadImage("TB3");
   loadImage("TB4");
-   loadImage("titleDK");
+  loadImage("titleDK");
+  loadImage("Dcircle");
 }
 
 function startAnimation(){
@@ -107,14 +108,19 @@ function mainMenu(){
 
 
 function circle(){
-	if(canvas.width - timeUpdate >= 1){
+	if(canvas.width*3 - timeUpdate*2 >= 1){
 		timeUpdate++;
-		ctx.fillStyle='green';
-		ctx.beginPath();
-		ctx.arc(joueur.x+(joueur.l/2),joueur.y+(joueur.h/2),canvas.width - timeUpdate,0,Math.PI*2);
-		ctx.closePath();
-		ctx.fill();
-		ctx.globalCompositeOperation='source-atop';
+		mid = canvas.width*3 - timeUpdate*2;
+		posx = joueur.x+(joueur.l/2)- mid/2;
+		posy = joueur.y+(joueur.h/2)- mid/2;
+		ctx.save();
+		ctx.fillStyle = 'black';
+		ctx.fillRect(posx-canvas.width+1, 0, canvas.width, canvas.height);
+		ctx.fillRect(posx+mid-1, 0, canvas.width, canvas.height);
+		ctx.fillRect(0, posy-canvas.height+1, canvas.width, canvas.height);
+		ctx.fillRect(0, posy+ mid-1, canvas.width, canvas.height);
+		ctx.drawImage(images["Dcircle"],posx,posy,mid,mid);
+		ctx.restore();
 	}else{
 		game = false;
 		timeUpdate = 0;

@@ -93,8 +93,22 @@ function dessineEtDeplaceLesObjets() {
 	if(!joueur.dead){
 		joueur.draw(ctx);
 	}else{
+		timeUpdate++;
 		joueur.move();
 		joueur.draw(ctx);
+		actualLevel.bonusList.forEach((bn) =>{
+			bn.draw(ctx);
+		})
+		tonneaux.forEach((tonn) => {
+			tonn.draw(ctx);
+		})
+		tonneauxBleu.forEach((tonb) => {
+			tonb.draw(ctx);
+		})
+		afficheScore();
+		afficheLife();
+		afficheLevel();
+		afficheMarteau();
 	}
 	afficheBarre();
 	actualLevel.plateform.forEach((plt) => {
@@ -112,31 +126,8 @@ function dessineEtDeplaceLesObjets() {
 		afficheScore();
 		afficheLife();
 		afficheLevel();
-	}else if(joueur.dead){
-		timeUpdate++;
-		actualLevel.bonusList.forEach((bn) =>{
-			bn.draw(ctx);
-		})
-		
-		tonneaux.forEach((tonn) => {
-			tonn.draw(ctx);
-
-		})
-		
-		tonneauxBleu.forEach((tonb) => {
-			tonb.draw(ctx);
-
-		})
-		afficheScore();
-		afficheLife();
-		afficheLevel();
-		afficheMarteau();
-		if(player.endD == 0){
-			ctx.globalCompositeOperation='destination-over';
-			ctx.fillStyle='black';
-			ctx.fillRect(0,0,cw,ch);
-		}
-	}else{
+ 
+	}else if (!joueur.dead){
 		dKong.donkeyAttack();
 		afficheScore();
 		afficheLife();
@@ -166,14 +157,10 @@ function dessineEtDeplaceLesObjets() {
 		marteau.draw(ctx);
 		joueur.move();
 		marioAtDK();
-	}  
-	if(canvas.width - timeUpdate >= 1 && joueur.dead){
-			ctx.globalCompositeOperation='destination-over';
-			ctx.fillStyle='black';
-			ctx.fillRect(0,0,canvas.width,canvas.height);
-			ctx.globalCompositeOperation='source-over';
+	} 
+	if(joueur.dead){
+			circle();
 	}	
-
 }
 
 
