@@ -35,7 +35,7 @@ class player{
 	  this.img = images["01R"];
 	  this.hit = false;
 	  this.score = 0;
-	  this.life = 1;
+	  this.life = 3;
 	  this.retry = 5;
 	  this.opacity = 1;
 	  this.moving = false;
@@ -210,6 +210,38 @@ class Tonneau {
 			this.vitesseX = -1;
 		}
 	}
+  }
+  
+  move() {
+		this.x += this.vitesseX;
+		this.y += this.vitesseY;
+	}
+}
+
+class TonneauBleu {
+  constructor(vx, vy) {
+    this.x = canvas.width/6.2;
+    this.y = canvas.height/5.2;
+	this.h = canvas.height/50;
+	this.l = canvas.height/50;
+    this.vitesseX = vx || 0; 
+    this.vitesseY = vy || 0;
+	this.img = images["TB1"];
+  }
+  
+  draw(ctx) {
+	ctx.save();
+		if(this.img == images["TB1"] && time%20 == 0){
+			this.img = images["TB2"];
+		}else if(this.img == images["TB2"] && time%20 == 0){
+			this.img = images["TB3"];
+		}else if(this.img == images["TB3"] && time%20 == 0){
+			this.img = images["TB4"];
+		}else if(time%20 == 0){
+			this.img = images["TB1"];
+		}
+		ctx.drawImage(this.img,this.x-this.l,this.y-this.h,this.h*2.1,this.l*2.1);
+    ctx.restore();
   }
   
   move() {

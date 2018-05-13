@@ -48,6 +48,12 @@ class donkeyKong{
 			}
 			else if (this.wait == 300) {
 				this.img = images["DKSP3"];
+				tonneauxBleu.push(new TonneauBleu(2,0));
+				tonneauxBleu.push(new TonneauBleu(1.6,0.4));
+				tonneauxBleu.push(new TonneauBleu(1.2,0.8));
+				tonneauxBleu.push(new TonneauBleu(0.8,1.2));
+				tonneauxBleu.push(new TonneauBleu(0.4,1.6));
+				tonneauxBleu.push(new TonneauBleu(0,2));
 				this.wait ++;
 			}
 			else if (this.wait == 360) {

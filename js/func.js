@@ -39,6 +39,10 @@ function loadAllImage(){
   loadImage("DKSPR1");
   loadImage("DKSP2");
   loadImage("DKSP3");
+  loadImage("TB1");
+  loadImage("TB2");
+  loadImage("TB3");
+  loadImage("TB4");
 }
 
 function circle(){
