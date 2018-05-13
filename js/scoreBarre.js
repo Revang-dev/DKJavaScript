@@ -55,7 +55,7 @@ function afficheLevel(){
 function afficheMarteau() {
 	var img = images["bonus"];
 	if (joueur.marteau) {
-		ctx.drawImage(img, 23 * (canvas.width / 100), canvas.height/50, (canvas.width/20), (canvas.height/17));
+		ctx.drawImage(img, 56 * (canvas.width / 100), canvas.height/50, (canvas.width/20), (canvas.height/17));
 	}
 }
 
