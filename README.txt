@@ -1,4 +1,5 @@
 Projet Javascript 2018 de MEERSMAN Rudy et DUMINY Gaétan en Master 1 IFI
+Pour démarrer, ouvrez le fichier "jsbin.qetinun.1.html" sous Firefox de préférence.
 
 I) Description du projet
 

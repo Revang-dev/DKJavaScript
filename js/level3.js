@@ -4,7 +4,7 @@ class levelT3 {
 		this.echelles = [];
 		this.bonusList = [];
 		this.color = 'yellow';
-		this.starty = canvas.height;
+		this.starty = canvas.height-canvas.height/120;
 		this.startx = canvas.width/5;
 	}
 	
